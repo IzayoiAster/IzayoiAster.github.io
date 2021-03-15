@@ -4,13 +4,57 @@
   
   
   <entry>
+    <title>关于“SSH服务器拒绝了密码”</title>
+    <link href="/2021/03/15/%E5%85%B3%E4%BA%8ESSH%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%92%E7%BB%9D%E4%BA%86%E5%AF%86%E7%A0%81/"/>
+    <url>/2021/03/15/%E5%85%B3%E4%BA%8ESSH%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%92%E7%BB%9D%E4%BA%86%E5%AF%86%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<p>今天跟着学Hadoop，Xshell硬是连不上，搜到一个百度经验笑死我了——</p><blockquote><p>…（前面一堆指令）<br>5/7<br>如果走到这一步你发现你的配置并没有哪里错了那么我们就是道友了。。。<br>回到Xshell找到你的虚拟机右键进入属性<br>6/7<br>把大写用户名改成小写，确定<br>7/7<br>连接上了。。。</p></blockquote><p>没想到有人和我一样傻哈哈哈</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Hadoop</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hadoop学习笔记一：序及准备</title>
+    <link href="/2021/03/14/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/"/>
+    <url>/2021/03/14/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
+    
+    <content type="html"><![CDATA[<p>Hadoop分为<strong>存储</strong>和<strong>计算</strong></p><ul><li>存储：HDFS</li><li>计算：MapReduce</li></ul><h4 id="HDFS文件系统"><a href="#HDFS文件系统" class="headerlink" title="HDFS文件系统"></a>HDFS文件系统</h4><p>HDFS（Hadoop Distributed File System, Hadoop分布式文件系统）<br><strong>NameNode → 多个DataNodes</strong></p><ul><li>NameNode: 文件在哪</li><li>DataNodes: 存数据</li><li>2NN: 负责备份NN</li></ul><h4 id="Yarn架构"><a href="#Yarn架构" class="headerlink" title="Yarn架构"></a>Yarn架构</h4><p>YARN （Yet Another Resource Negotiator，另一种资源协调者）<br><strong>client → RM → NMs</strong></p><ul><li>ResourceManager(RM) : 整个集群资源（CPU, RAM）等的老大</li><li>NodeManager(NM) : 单个节点服务器的老大</li><li>单个节点服务器能虚拟出多个儿子，每个儿子相当于一个小电脑（服务器），称为Container容器，内含ApplicationManager(AM) : 单个任务的老大</li></ul><p><img src="./Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/01.jpg"></p><h4 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h4><p>右键移除并不会真正删掉，可以通过原位置的vmx导入<br>右键管理从磁盘删除才是删掉</p><p>克隆之后，如下操作（直接用root用户登录更方便）：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>sysconfig<span class="hljs-regexp">/network-scripts/i</span>fcfg-ens33<br>vim <span class="hljs-regexp">/etc/</span>hostname<br>reboot<br></code></pre></td></tr></table></figure><p>重启后进行检查</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">ifconfig<br>ping www<span class="hljs-selector-class">.baidu</span>.com<br>hostname<br></code></pre></td></tr></table></figure><p>再在Xshell里导入，并输<code>hostname</code>再次检查</p><h4 id="安装JDK-Hadoop"><a href="#安装JDK-Hadoop" class="headerlink" title="安装JDK Hadoop"></a>安装JDK Hadoop</h4><p>（已经在hadoop100执行了<code>rpm -qa | grep -i java | xargs -n1 rpm -e --nodeps</code>）<br>一般在102安装即可（之前创建的目录，具体去看尚硅谷PDF）</p><p>小技巧：Xshell双击标签就能再开一个新的</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Hadoop</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>紫菀的第零篇博客</title>
-    <link href="/2021/03/13/%E5%A5%BD%E8%B5%B7%E6%9D%A5%E4%BA%86/"/>
-    <url>/2021/03/13/%E5%A5%BD%E8%B5%B7%E6%9D%A5%E4%BA%86/</url>
+    <link href="/2021/03/13/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E9%9B%B6%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2021/03/13/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E9%9B%B6%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     
     <content type="html"><![CDATA[<p>为什么是第零篇呢？因为算是一个全新开始吧</p><p>昨天受DH启发，去咨询了一下LCS，没想到直接就进了LCS的实验室？！研究方向是大数据，目前交给我的任务是搭建一个Hadoop</p><p>既是大数据，又是Java，好耶！<br>十六夜紫菀，冲冲冲💪</p><p>另外，虽然咨询哈深的学长说，ACM能搞就搞，但是结合我自身的竞赛体会以及知乎上众多回答，我还是决定不打ACM了 <em>（当然，算法课肯定是要上的，算法题也不能停下来）</em>。ACM这个东西，实在是<strong>热爱 &gt; 价值</strong>，知乎上有个人说得好，如果搞ACM是打算拿来保研的话，性价比是很低的，有这个时间不如搞好学习、做做项目，对以后更有帮助。</p><p>我这个人，数学思维显然是不太行的，况且ACM就算再努力，最后也有可能因为各种原因付诸东流。比起思考型，我更喜欢实验室这种研究型的，能让我享受学习新东西的快感 <em>（也不是说不思考啦，只是方向不太一样）</em></p><p>向着紫菀花开的明天，冲🦆！<br>（此处引用上一篇博客里制定的计划）</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>紫菀</tag>
+      
+    </tags>
     
   </entry>
   
@@ -24,6 +68,12 @@
     <content type="html"><![CDATA[<h4 id="一些闲话："><a href="#一些闲话：" class="headerlink" title="一些闲话："></a>一些闲话：</h4><p>之前参加冰峰实验室的纳新，因为大一年度项目是微信小程序（实际上路子在这一步就走错了，我应该更有主见一点不应该顺着老师的意思），就想着要是加入实验室的微信小程序纳新方向，岂不是一石二鸟。</p><p>不过脑子一热上了贼船，做了好几次纳新作业之后，我才逐渐回过神来————首先我这个人对微信有一种说不上来的讨厌；其次，微信小程序被腾讯限制了生态，很多学到的东西只能用在微信上，学这玩意儿太亏了；最后，我虽然还没定好大方向，但是以后肯定是要主打至少Java/C++/Python三大语言之一的，到时候简历上的项目经历自然也是这几个方向的为好，微信小程序封闭不说，就算把它强行算到web前端，那也是个小项目，综合来看最有用的实验室还是安卓方向。</p><p>再者，塞翁失马焉知非福，虽然寒假捣鼓这几次微信作业，看起来是白费时间了（其实的确是吧……），不过起码大一年度项目做起来轻松多了（而且虽说之前我说我应该立项时更有主见一些，不过这个年度项目的确最适合用微信小程序来做），目前为止学的也充其量是个皮毛而已，大部分还是传统的HTML/CSS/JS，对于我写博客肯定是有用的。</p><p>那么，福是啥呢。记得之前刚开学晚上弹吉他时一位研究生学长很认真地告诉我大一一定要好好学习，坦白来讲，我大一也就中后期好好学习了，前期真是我都不忍直视……这学期是时候给自己创造<strong>福</strong>了。再一想，其实之前也有很多声音建议大一不要加入实验室，好好学习来着（不然，实验室纳新明明不难，为什么每次都有很多大二的参加）</p><h4 id="Plans："><a href="#Plans：" class="headerlink" title="Plans："></a>Plans：</h4><ol><li>期末学分绩达到级部<strong>前16</strong><ul><li>作业不拖延，认真完成；</li><li>上课不看一眼手机，就算觉得简单，也要听</li><li>万一，万一，出现了落课，<strong>绝对要立刻补上</strong></li></ul></li><li>六级高分考过<ul><li>每天30个六级单词，雷打不动</li><li>至少刷6套六级真题</li></ul></li><li>每天列好计划<ul><li>不论学习、生活还是宿舍的环境都要有条理</li></ul></li><li>学习Java<ul><li>看《Java核心技术卷一》</li><li>视情况而定，不求看完，但看的部分一定不能马虎，样例敲一遍</li></ul></li></ol><p><strong>最终目标：哈尔滨工业大学（深圳）</strong></p><p>很难，但如果不考好，怎么能有自由选择的权力<br>目前意向发展方向：</p><ul><li>人工智能</li><li>大数据</li><li>云计算</li><li>算法</li><li>引擎（游戏）</li></ul><p>微信呢，学就学了，毕竟年轻的一大资本就是不怕重来嘛；Java作为学校的课程，在大数据云计算和游戏等方面也都有很强的应用，还是目前需求量最大的语言，研究研究Java肯定是错不了的</p><p>2021/3/12</p><p>嗨呀，纠结啊……昨天给冰峰微信的学长发邮件之后，学长也回复我了</p><details><summary>具体回复</summary><p>同学你好，你的邮件我们已经收到，是这样的，微信小程序他只是一个起点而已，仅此而已，说实话只学微信小程序将来是不好找工作的，但是你从微信小程序中学到的不仅仅是一些相关的技术，作为一个软件工程专业的学生，技术仅仅只是一部分而已，我们专业的学生很少能够吃技术饭吃一辈子的，将来肯定是要转管理层或者啥的，我从邮件中得知你的方向是算法人工智能之类的，这个主要还是研究生阶段的主要深入的方向，本科阶段这些是指皮毛性的说一说，不会深究。回到微信小程序，其一，不论是微信还是安卓还是前端后端，在实验室只是一个开始，一个萌芽阶段。在实验室的项目中，不仅能够锻炼你的技术，最重要的是能够锻炼你的业务能力，以及对软件工程这门学科的了解。开发软件的整个流程你会有一个大体的认识，从最初产品经理给出原型，前端绘制页面，于此同时后端也在写接口，然后前后端对接，最后测试，发布，然后后期的维护，你都能经历到。不只是微信，安卓 IOS web前端等开发流程都是这样的，虽然可能微信小程序在你以后的工作中用不到，但是这些开发经验一定会在你以后的开发中发挥中要作用。按照我的理解本科阶段工程性的东西还是比算法性的东西要重要一点，但也缺乏本科阶段算法也很牛的人。其次就是你学习了微信小程序他有一个好处就是，你再转别的方向就比较轻松，web 前端 后端都可以，你在开发过程中也会了解到后端的部分知识，一些业务逻辑。很好的一个案例就是我们实验室微信小程序组的陈笑宇学长，去年就拿到美团的offer,而且是美团后端的offer。我自己在学习之余也会了解一些web前端的框架，比如vue以及，这些方向的学习都是非常相似的。其三，实验室给你的是一个学习环境，实验室中有很多技术很牛的人，我大一进来时是一个小白，我高中从来没参加过什么关于计算机的比赛，大学才开始接触这部分的知识，说实在的，大一上学期结束我什么都不懂，也就学了个C语言，加入实验室后才知道有很多方向，很多知识可以学，才知道了什么前端后端，什么是vue，什么是springBoot，开阔了自己的视野，受周围人的影响，自己对这些方向也就感兴趣了，自己就会找一些视频观看，学习这方面的内容，不明白的话问一问实验室的其他同学也就明白了，知识面广了，能力也就提升了。实验室不能说能给你一个完美的大学生活，我觉得至少能够给你的大学生活打个90分吧。<br><br>原信：<br>其实我已经纠结了好久选择微信小程序方向是不是正确的……说来惭愧，一开始选择微信小程序方向只是因为导师分配的大一年度项目正好也是微信小程序，就想着学微信小程序一箭双雕岂不美哉，选择了微信方向。但我后来想了很久，不论是我将来期望的职业范围还是我感兴趣的研究方向，都和微信小程序没有太大联系（当然我只是个啥也不懂的大一新生，所以理解很可能有偏差，我目前想要发展的方向主要是算法、引擎、人工智能这种，是不是需要主攻Java C++这些……）而且说实在的，加实验室一方面是为了提升能力，一方面是也为了丰富自己的项目经历，我感觉如果做微信小程序项目好像不能成为我以后的方向上有用的项目经历，微信小程序的被腾讯局限起来的生态学起来也感觉好亏……所以我还是决定不参加微信小程序纳新了，虽然我明明还没被冰峰录取却还发封邮件来说明自己不参加，或多或少会显得很内啥，但学长这么多天来认真看了我的作业并给出了建议，我也是应该写封邮件的。实在实在是非常抱歉！如果我的理解不对的话，还请学长告知一下，我还会考虑加入的</p></details><p>怎么说呢，我觉得有点道理，但又不是很能打动我……</p><p>刚才加了一个考研哈深的学长咨询了一下（学长好冷漠555），学长说ACM能参加的话一定要参加，比项目啥的有用多了，那我觉得吧，还是不参加实验室，或者摸个鱼就好。</p><p>总之面试还是去看看吧，再问问实验室学长的意见。</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>紫菀</tag>
+      
+    </tags>
     
   </entry>
   

@@ -20,9 +20,25 @@
   <meta name="author" content="十六夜紫菀 / IzayoiAster">
   <meta name="keywords" content="">
   
-  <title>归档 - 紫菀的小窝</title>
+  <title>Hadoop学习笔记一：序及准备 - 紫菀的小窝</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -50,7 +66,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -149,9 +165,31 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Hadoop学习笔记一：序及准备">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-14 23:40" pubdate>
+        2021年3月14日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -164,64 +202,113 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 5 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/03/15/%E5%85%B3%E4%BA%8ESSH%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%92%E7%BB%9D%E4%BA%86%E5%AF%86%E7%A0%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">关于“SSH服务器拒绝了密码”</span>
-      <time style="float: right;">03-15</time>
-    </a>
-  
-    
-    <a href="/2021/03/14/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hadoop学习笔记一：序及准备</span>
-      <time style="float: right;">03-14</time>
-    </a>
-  
-    
-    <a href="/2021/03/13/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E9%9B%B6%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">紫菀的第零篇博客</span>
-      <time style="float: right;">03-13</time>
-    </a>
-  
-    
-    <a href="/2021/03/12/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">紫菀的第一篇博客</span>
-      <time style="float: right;">03-12</time>
-    </a>
-  
-    
-    <a href="/2021/03/11/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <time style="float: right;">03-11</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hadoop学习笔记一：序及准备</h1>
+            
+            <div class="markdown-body">
+              <p>Hadoop分为<strong>存储</strong>和<strong>计算</strong></p>
+<ul>
+<li>存储：HDFS</li>
+<li>计算：MapReduce</li>
+</ul>
+<h4 id="HDFS文件系统"><a href="#HDFS文件系统" class="headerlink" title="HDFS文件系统"></a>HDFS文件系统</h4><p>HDFS（Hadoop Distributed File System, Hadoop分布式文件系统）<br><strong>NameNode → 多个DataNodes</strong></p>
+<ul>
+<li>NameNode: 文件在哪</li>
+<li>DataNodes: 存数据</li>
+<li>2NN: 负责备份NN</li>
+</ul>
+<h4 id="Yarn架构"><a href="#Yarn架构" class="headerlink" title="Yarn架构"></a>Yarn架构</h4><p>YARN （Yet Another Resource Negotiator，另一种资源协调者）<br><strong>client → RM → NMs</strong></p>
+<ul>
+<li>ResourceManager(RM) : 整个集群资源（CPU, RAM）等的老大</li>
+<li>NodeManager(NM) : 单个节点服务器的老大</li>
+<li>单个节点服务器能虚拟出多个儿子，每个儿子相当于一个小电脑（服务器），称为Container容器，内含ApplicationManager(AM) : 单个任务的老大</li>
+</ul>
+<p><img src="./Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/01.jpg" srcset="/img/loading.gif"></p>
+<h4 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h4><p>右键移除并不会真正删掉，可以通过原位置的vmx导入<br>右键管理从磁盘删除才是删掉</p>
+<p>克隆之后，如下操作（直接用root用户登录更方便）：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>sysconfig<span class="hljs-regexp">/network-scripts/i</span>fcfg-ens33<br>vim <span class="hljs-regexp">/etc/</span>hostname<br>reboot<br></code></pre></td></tr></table></figure>
+<p>重启后进行检查</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">ifconfig<br>ping www<span class="hljs-selector-class">.baidu</span>.com<br>hostname<br></code></pre></td></tr></table></figure>
+<p>再在Xshell里导入，并输<code>hostname</code>再次检查</p>
+<h4 id="安装JDK-Hadoop"><a href="#安装JDK-Hadoop" class="headerlink" title="安装JDK Hadoop"></a>安装JDK Hadoop</h4><p>（已经在hadoop100执行了<code>rpm -qa | grep -i java | xargs -n1 rpm -e --nodeps</code>）<br>一般在102安装即可（之前创建的目录，具体去看尚硅谷PDF）</p>
+<p>小技巧：Xshell双击标签就能再开一个新的</p>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hadoop/">Hadoop</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/15/%E5%85%B3%E4%BA%8ESSH%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%92%E7%BB%9D%E4%BA%86%E5%AF%86%E7%A0%81/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于“SSH服务器拒绝了密码”</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/13/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E9%9B%B6%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">紫菀的第零篇博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -302,9 +389,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
