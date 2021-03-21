@@ -232,7 +232,7 @@
 <li>NodeManager(NM) : 单个节点服务器的老大</li>
 <li>单个节点服务器能虚拟出多个儿子，每个儿子相当于一个小电脑（服务器），称为Container容器，内含ApplicationManager(AM) : 单个任务的老大</li>
 </ul>
-<p><img src="./Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/01.jpg" srcset="/img/loading.gif"></p>
+<p><img src="https://raw.githubusercontent.com/IzayoiAster/IzayoiAster.github.io/main/2021/03/14/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/01.jpg" srcset="/img/loading.gif"></p>
 <h4 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h4><p>右键移除并不会真正删掉，可以通过原位置的vmx导入<br>右键管理从磁盘删除才是删掉</p>
 <p>克隆之后，如下操作（直接用root用户登录更方便）：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>sysconfig<span class="hljs-regexp">/network-scripts/i</span>fcfg-ens33<br>vim <span class="hljs-regexp">/etc/</span>hostname<br>reboot<br></code></pre></td></tr></table></figure>
