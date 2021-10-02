@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  
+    <meta name="description" content="">
+  
+  <meta name="author" content="十六夜紫菀 / IzayoiAster">
+  <meta name="keywords" content="">
+  
+  <title>Python学习笔记2-数据可视化 - 紫菀的小窝</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Aster's nest</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Python学习笔记2-数据可视化">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-02 18:58" pubdate>
+        2021年6月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python学习笔记2-数据可视化</h1>
+            
+            <div class="markdown-body">
+              <h2 id="绘制简单的折线图"><a href="#绘制简单的折线图" class="headerlink" title="绘制简单的折线图"></a>绘制简单的折线图</h2><h3 id="安装Matplotlib"><a href="#安装Matplotlib" class="headerlink" title="安装Matplotlib"></a>安装Matplotlib</h3><p><code>python -m pip install --user matplotlib</code></p>
+<p>一个简单的例子</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>squares = [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br>fig, ax = plt.subplots()<br>ax.plot(squares)<br><br>plt.show()<br></code></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li><code>subplots()</code>可以在一张图片中绘制（一个或多个）图表</li>
+<li><code>fig</code>表示整张图片</li>
+<li><code>ax</code>表示图片中的各个图表</li>
+<li><code>plot()</code>尝试根据给定的数据以有意义的方式绘制图表</li>
+<li><code>plt.show()</code>打开Matplotlib查看器并显示绘制的图表</li>
+</ul>
+<p>效果如下：<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.23nfjpbdhpy8.png" srcset="/img/loading.gif" alt="image"></p>
+<p>发现很简陋，做一下修改</p>
+<blockquote>
+<p>pyplot默认中文是乱码，有很多种解决方案，但我觉得最好的还是在用到中文的地方后追加<code>fontproperties = &#39;Microsoft YaHei&#39;</code><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hoxily/article/details/44240395">查询中文字体对应的英文名点我</a></p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># -!- coding: utf-8 -!-</span><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>squares = [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]<br>fig, ax = plt.subplots()<br><br><span class="hljs-comment"># linewidth决定线条粗细</span><br>ax.plot(squares, linewidth = <span class="hljs-number">3</span>)<br><br><span class="hljs-comment"># 设置标题及坐标轴标签</span><br>ax.set_title(<span class="hljs-string">&quot;平方数&quot;</span>, fontsize = <span class="hljs-number">24</span>, fontproperties = <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>)<br>ax.set_xlabel(<span class="hljs-string">&quot;值&quot;</span>, fontsize = <span class="hljs-number">14</span>, fontproperties = <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>)<br>ax.set_ylabel(<span class="hljs-string">&quot;值的平方&quot;</span>, fontsize = <span class="hljs-number">14</span>, fontproperties = <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>)<br><br><span class="hljs-comment"># 设置刻度标记的大小（axis = &#x27;both&#x27;：同时更改所有坐标轴）</span><br>ax.tick_params(axis = <span class="hljs-string">&#x27;both&#x27;</span>, labelsize = <span class="hljs-number">14</span>)<br><br>plt.show()<br></code></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.6up2pl7vi340.png" srcset="/img/loading.gif" alt="image"></p>
+<p>发现，pyplot的自动生成数据好像不是很聪明，没有正确地绘制数据——折线图终点指出4的平方是25显然是不对的，下面来修复</p>
+<p>向pyplot提供数据的时候，它会假设 x 从 0 开始，但是我们这里显然是从 1 开始。需要向pyplot<strong>同时提供输入值和输出值</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">...<br>input_values = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>] <span class="hljs-comment"># x</span><br>squares = [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>] <span class="hljs-comment"># y</span><br>...<br>ax.plot(input_values, squares, linewidth = <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<p>正常啦！<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.6jkthl0rnus0.png" srcset="/img/loading.gif" alt="image"></p>
+<h3 id="使用内置样式"><a href="#使用内置样式" class="headerlink" title="使用内置样式"></a>使用内置样式</h3><p>查看有什么内置样式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-meta">&gt;&gt;&gt; </span>plt.style.available<br>[<span class="hljs-string">&#x27;Solarize_Light2&#x27;</span>, <span class="hljs-string">&#x27;_classic_test_patch&#x27;</span>, <span class="hljs-string">&#x27;bmh&#x27;</span>, <span class="hljs-string">&#x27;classic&#x27;</span>, <span class="hljs-string">&#x27;dark_background&#x27;</span>, <span class="hljs-string">&#x27;fast&#x27;</span>, <span class="hljs-string">&#x27;fivethirtyeight&#x27;</span>, <span class="hljs-string">&#x27;ggplot&#x27;</span>, <span class="hljs-string">&#x27;grayscale&#x27;</span>, <span class="hljs-string">&#x27;seaborn&#x27;</span>, <span class="hljs-string">&#x27;seaborn-bright&#x27;</span>, <span class="hljs-string">&#x27;seaborn-colorblind&#x27;</span>, <span class="hljs-string">&#x27;seaborn-dark&#x27;</span>, <span class="hljs-string">&#x27;seaborn-dark-palette&#x27;</span>, <span class="hljs-string">&#x27;seaborn-darkgrid&#x27;</span>, <span class="hljs-string">&#x27;seaborn-deep&#x27;</span>, <span class="hljs-string">&#x27;seaborn-muted&#x27;</span>, <span class="hljs-string">&#x27;seaborn-notebook&#x27;</span>, <span class="hljs-string">&#x27;seaborn-paper&#x27;</span>, <span class="hljs-string">&#x27;seaborn-pastel&#x27;</span>, <span class="hljs-string">&#x27;seaborn-poster&#x27;</span>, <span class="hljs-string">&#x27;seaborn-talk&#x27;</span>, <span class="hljs-string">&#x27;seaborn-ticks&#x27;</span>, <span class="hljs-string">&#x27;seaborn-white&#x27;</span>, <span class="hljs-string">&#x27;seaborn-whitegrid&#x27;</span>, <span class="hljs-string">&#x27;tableau-colorblind10&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<p>使用样式：<br>在<strong>生成图表</strong>的代码前添加：<br><code>plt.style.use(&#39;seaborn-dark-palette&#39;)</code></p>
+<h3 id="scatter-散点图"><a href="#scatter-散点图" class="headerlink" title="scatter( ) 散点图"></a>scatter( ) 散点图</h3><ol>
+<li>向方法<code>scatter()</code>传递一对xy坐标，它将在(x, y)绘制一个点<br><code>ax.scatter(x, y)</code></li>
+<li>向方法<code>scatter()</code>传递两个<strong>分别</strong>包含<strong>x值</strong>和<strong>y值</strong>的列表，可以绘制一系列的点</li>
+</ol>
+<p>（里面出现了新东西<code>ax.axis()设定坐标轴范围</code>）</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># -!- coding: utf-8 -!-</span><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>x_values = <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1001</span>) <span class="hljs-comment"># scatter是可以直接接收range的哦~</span><br>y_values = [x ** <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> x_values] <span class="hljs-comment"># 循环生成y值</span><br><br>plt.style.use(<span class="hljs-string">&#x27;seaborn&#x27;</span>)<br>fig, ax = plt.subplots()<br>ax.scatter(x_values, y_values, s = <span class="hljs-number">10</span>) <span class="hljs-comment"># s 设置散点的尺寸</span><br><br><span class="hljs-comment"># 设置标题及坐标轴标签</span><br>ax.set_title(<span class="hljs-string">&quot;平方数&quot;</span>, fontsize = <span class="hljs-number">24</span>, fontproperties = <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>)<br>ax.set_xlabel(<span class="hljs-string">&quot;值&quot;</span>, fontsize = <span class="hljs-number">14</span>, fontproperties = <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>)<br>ax.set_ylabel(<span class="hljs-string">&quot;值的平方&quot;</span>, fontsize = <span class="hljs-number">14</span>, fontproperties = <span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>)<br><br><span class="hljs-comment"># 设置刻度标记的大小（axis = &#x27;both&#x27;：同时更改所有坐标轴）</span><br>ax.tick_params(axis = <span class="hljs-string">&#x27;both&#x27;</span>, labelsize = <span class="hljs-number">14</span>)<br><br><span class="hljs-comment"># 设定各个坐标轴的取值范围</span><br>ax.axis([<span class="hljs-number">0</span>, <span class="hljs-number">1100</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1100000</span>])<br><br>plt.show()<br></code></pre></td></tr></table></figure>
+<p>效果：<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.5dr3veuab1s0.png" srcset="/img/loading.gif" alt="image"></p>
+<h3 id="设置颜色"><a href="#设置颜色" class="headerlink" title="设置颜色"></a>设置颜色</h3><p>向scatter()传递参数c以设置颜色<br>可以是颜色的名称，也可以是RGB颜色</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py">ax.scatter(x_values, y_values, c = <span class="hljs-string">&#x27;red&#x27;</span>, s = <span class="hljs-number">10</span>)<br>ax.scatter(x_values, y_values, c = (<span class="hljs-number">0</span>, <span class="hljs-number">0.8</span>, <span class="hljs-number">0</span>), s = <span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<p>也可以使用<strong>颜色映射</strong>（colormap），让scatter()按照一定的规律渐变颜色</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">ax.scatter(x_values, y_values, c = y_values, cmap = plt.cm.Blues, s = <span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
+<p>效果如下：<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.lhjrr83c28w.png" srcset="/img/loading.gif" alt="image"></p>
+<h3 id="自动保存图表"><a href="#自动保存图表" class="headerlink" title="自动保存图表"></a>自动保存图表</h3><p>将调用<code>plt.show()</code>替换为<code>plt.savefig()</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">plt.savefig(<span class="hljs-string">&#x27;test.png&#x27;</span>, bbox_inches = <span class="hljs-string">&#x27;tight&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>第一个实参指定文件名</li>
+<li>第二个实参会将图表<strong>多余的空白区域</strong>裁剪掉（如果不想裁剪，不加第二个参数即可）</li>
+</ul>
+<h3 id="调整尺寸以适合屏幕"><a href="#调整尺寸以适合屏幕" class="headerlink" title="调整尺寸以适合屏幕"></a>调整尺寸以适合屏幕</h3><p>创建图表时，可以传递参数<strong>figsize</strong>以指定生成的图形的尺寸，需要给参数figsize指定一个<strong>元组</strong>，告诉Matplotlib绘图窗口的尺寸，单位为英寸（inch）（ 1 inch  ≈ 2.54 cm ）<br>如果知道当前系统的分辨率，还可以传递参数<strong>dpi</strong> (dots per inch，图像每英寸长度内的像素点数) 以有效利用屏幕空间</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">fig, ax = plt.subplots(figsize = (<span class="hljs-number">10</span>, <span class="hljs-number">6</span>), dpi = <span class="hljs-number">128</span>)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>（有一个应用实例见P284，看了一遍感觉再写进来的意义不是很大，上面已经把一些实例里的新东西写进来了）</p>
+</blockquote>
+<blockquote>
+<p>还有一个Python包Ployly，我感觉大同小异，也就不写了，见P292</p>
+</blockquote>
+<h2 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h2><h3 id="分析CSV文件头"><a href="#分析CSV文件头" class="headerlink" title="分析CSV文件头"></a>分析CSV文件头</h3><blockquote>
+<p>CSV：以逗号分隔的值，comma-separated values</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> csv<br><br>filename = <span class="hljs-string">&#x27;...&#x27;</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename) <span class="hljs-keyword">as</span> f:<br>    reader = csv.reader(f)<br>    header_row = <span class="hljs-built_in">next</span>(reader)<br>    print(header_row)<br></code></pre></td></tr></table></figure>
+<ul>
+<li>调用<code>csv.reader(f)</code>，会返回一个关联到文件f的CSV阅读器对象，将这个阅读器对象赋给reader</li>
+<li>csv模块中，包含函数<code>next()</code>，使用<code>next(reader)</code>，会返回csv阅读器reader的<strong>下一行</strong>；（上面的代码中，只调用了<code>next()</code>一次，所以得到的是文件的第一行，其中包含文件头）</li>
+</ul>
+<p>上述代码中的<code>print(header_row)</code>输出如下：<br><code>[&#39;NAME&#39;, &#39;ADDRESS&#39;, &#39;AGE&#39;, &#39;BIRTHDAY&#39;...]</code><br>也可以替换为这两句，来获取每个元素的索引及其值：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">for</span> index, column_header <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(header_row):<br>    print(index, column_header)<br></code></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-number">0</span> NAME<br><span class="hljs-number">1</span> <span class="hljs-keyword">ADDRESS</span><br><span class="hljs-keyword">2 </span>AGE<br><span class="hljs-number">3</span> <span class="hljs-keyword">BIRTHDAY</span><br><span class="hljs-keyword">...</span><br></code></pre></td></tr></table></figure>
+<p>↑ 在上述for循环中，对列表调用了<code>enumerate()</code>来获取每个元素的<strong>索引</strong>及其<strong>值</strong></p>
+<h3 id="提取并读取数据"><a href="#提取并读取数据" class="headerlink" title="提取并读取数据"></a>提取并读取数据</h3><p>以读取年龄为例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> csv<br><br>filename = <span class="hljs-string">&#x27;...&#x27;</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename) <span class="hljs-keyword">as</span> f:<br>    reader = csv.reader(f)<br>    header_row = <span class="hljs-built_in">next</span>(reader)<br>    <br>    ages = [] <span class="hljs-comment"># 创建名为ages的空列表</span><br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader: <span class="hljs-comment"># 遍历csv文件中余下的每一行</span><br>        age = <span class="hljs-built_in">int</span>(row[<span class="hljs-number">2</span>]) <span class="hljs-comment"># 由上面的分析csv文件头可知，年龄是第三列</span><br>        ages.append(age)<br></code></pre></td></tr></table></figure>
+<h3 id="绘制图表"><a href="#绘制图表" class="headerlink" title="绘制图表"></a>绘制图表</h3><h4 id="datetime模块"><a href="#datetime模块" class="headerlink" title="datetime模块"></a>datetime模块</h4><p>比如说，要获取csv里每个人的生日<br>其中是这么存储的：<br><code>&quot;Lotus&quot;, &quot;Shenzhen&quot;, &quot;17&quot;, &quot;2002-9-16&quot;, ...</code><br>我们需要想办法，把”2002-9-16”转换为一个<strong>表示相应日期的对象</strong><br>可以使用模块datetime中的<code>strptime()</code>方法，将<strong>包含所需日期的字符串</strong>作为第一个实参，第二个实参用来告诉Python<strong>如何设置日期的格式</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> strptime<br>birthday = datetime.strptime(<span class="hljs-string">&quot;2002-9-16&quot;</span>, <span class="hljs-string">&quot;%Y-%m-%d&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>在这里，</p>
+<ul>
+<li><code>%Y-</code>让python将字符串中的第一个<code>-</code>前面的部分视为四位的年份</li>
+<li><code>%m-</code>让python将字符串中的第二个<code>-</code>前面的部分视为表示月份的数</li>
+<li><code>%d</code>让python将字符串中的最后一部分视为月份中的一天<br>（类比C++中的格式控制符）</li>
+</ul>
+<p>一些常用实参如下：</p>
+<table>
+<thead>
+<tr>
+<th>实参</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%A</td>
+<td>星期几，如Monday</td>
+</tr>
+<tr>
+<td>%B</td>
+<td>月份名，如September</td>
+</tr>
+<tr>
+<td>%m</td>
+<td>用数表示的月份，01~12</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>用数表示的月中某天，01~31</td>
+</tr>
+<tr>
+<td>%Y</td>
+<td>四位数年份</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>年份后两位</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>24小时制的小时数，00~23</td>
+</tr>
+<tr>
+<td>%I</td>
+<td>12小时制的小时数，01~12</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>am或pm</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>分钟数，00~59</td>
+</tr>
+<tr>
+<td>%S</td>
+<td>秒数， 00~61</td>
+</tr>
+<tr>
+<td><del>（没错，就是到61秒）</del></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>p.s. <code>strftime()</code>是转换为特定格式输出，而<code>strptime()</code>是将一个（时间）字符串解析为时间的一个类型对象</p>
+</blockquote>
+<p>下面是一个例子：统计文件中，人们的出生日期，并且绘制出生日期和年龄的折线图 <strong>（没错，我都感觉这个例子太√⑧奇怪了；还不是因为我想和书上有点区别却又想了个这么不合适的情景555）</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> csv<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> strptime<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>filename = <span class="hljs-string">&#x27;...&#x27;</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename) <span class="hljs-keyword">as</span> f:<br>    reader = csv.reader(f)<br>    header_row = <span class="hljs-built_in">next</span>(reader) <span class="hljs-comment"># 先读掉文件头再说</span><br><br>    birthdays, ages = [], []<br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:<br>        <span class="hljs-comment"># 上文里假设了生日是第四列，年龄是第三列</span><br>        current_date = datetime.strptime(row[<span class="hljs-number">3</span>], <span class="hljs-string">&quot;%Y-%m-%d&quot;</span>)<br>        age = <span class="hljs-built_in">int</span>(row[<span class="hljs-number">2</span>])<br>        birthdays.append(current_date)<br>        ages.append(age)<br><br>fig, ax = plt.subplots()<br>ax.plot(birthdays, ages) <span class="hljs-comment"># 数据导入图表</span><br><br>ax.set_title(<span class="hljs-string">&quot;意义不明的生日年龄表&quot;</span>)<br><br>ax.set_xlabel(<span class="hljs-string">&#x27;&#x27;</span>, fontsize = <span class="hljs-number">16</span>)<br>fig.autofmt_xdate() <span class="hljs-comment">#见下</span><br><span class="hljs-meta">... </span><br><span class="hljs-meta">... </span><br></code></pre></td></tr></table></figure>
+<p>其中<code>fig.autofmt_xdate()</code>是使绘制的日期标签<strong>倾斜</strong>，以避免其重叠</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p><code>fill_between()</code>接受<strong>一个</strong>x值系列和<strong>两个</strong>y值系列，并<strong>填充</strong>两个y值系列之间的空间</p>
+<ul>
+<li>facecolor实参用于指定颜色</li>
+<li>alpha实参用于设置透明度（0~1），1为完全不透明<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">ax.fill_between(dates, highs, lows, fac3color = <span class="hljs-string">&#x27;blue&#x27;</span>, alpha = <span class="hljs-number">0.1</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2>p.s. 若得到的json杂乱无章吗，可以用python格式化一下<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">...<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(new_readable_file, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    json.dump(origin_data, f, indent=<span class="hljs-number">4</span>) <span class="hljs-comment"># indent=4，缩进4</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>视情况再写，P314</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="使用API"><a href="#使用API" class="headerlink" title="使用API"></a>使用API</h2><blockquote>
+<p>API：Application Programming Interface，应用程序接口</p>
+</blockquote>
+<h3 id="安装Requests"><a href="#安装Requests" class="headerlink" title="安装Requests"></a>安装Requests</h3><p><code>python -m pip install --user requests</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-comment"># 这个API返回GitHub当前托管了多少个Python项目，以及有关最受欢迎的Python项目的信息</span><br>url = <span class="hljs-string">&#x27;https://api.github.com/search/repositories?q=language:python&amp;sort=stars&#x27;</span><br><br><span class="hljs-comment"># 显式地调用第三版的GitHub API</span><br>headers = &#123;<span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/vnd.github.v3+json&#x27;</span>&#125;<br><span class="hljs-comment"># 将响应对象赋给变量r</span><br>r = requests.get(url, headers=headers)<br><br><span class="hljs-comment"># 状态码200意味成功</span><br>print(<span class="hljs-string">f&quot;Status cpde: <span class="hljs-subst">&#123;r.status_code&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 这个API返回json格式的信息，因此用json()方法将信息转换为一个Python字典</span><br>response_dict = r.json()<br><br>print(response_dict.keys())<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">Status cpde: <span class="hljs-number">200</span><br><span class="hljs-function"><span class="hljs-title">dict_keys</span><span class="hljs-params">([<span class="hljs-string">&#x27;total_count&#x27;</span>, <span class="hljs-string">&#x27;incomplete_results&#x27;</span>, <span class="hljs-string">&#x27;items&#x27;</span>])</span></span><br></code></pre></td></tr></table></figure>
+<h3 id="处理响应字典"><a href="#处理响应字典" class="headerlink" title="处理响应字典"></a>处理响应字典</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;https://api.github.com/search/repositories?q=language:python&amp;sort=stars&#x27;</span><br>headers = &#123;<span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/vnd.github.v3+json&#x27;</span>&#125;<br>r = requests.get(url, headers=headers)<br>print(<span class="hljs-string">f&quot;Status cpde: <span class="hljs-subst">&#123;r.status_code&#125;</span>&quot;</span>)<br><br>response_dict = r.json()<br><span class="hljs-comment"># 打印total_count：GitHub一共有多少个python仓库</span><br>print(<span class="hljs-string">f&quot;Total repositories: <span class="hljs-subst">&#123;response_dict[<span class="hljs-string">&#x27;total_count&#x27;</span>]&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 与&#x27;items&#x27;关联的是一个列表，列表中有很多字典，而每个字典又包含一个有关python仓库的信息。打印repo_dicts以获悉获得了多少个仓库的信息</span><br>repo_dicts = response_dict[<span class="hljs-string">&#x27;items&#x27;</span>]<br>print(<span class="hljs-string">f&quot;Respositories returned: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(repo_dicts)&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 提取第一个字典看一看</span><br><span class="hljs-comment">######################################</span><br>repo_dict = repo_dicts[<span class="hljs-number">0</span>]<br>print(<span class="hljs-string">f&quot;\nKeys: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(repo_dict)&#125;</span>&quot;</span>)<br><span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(repo_dict.keys()):<br>    print(key)<br><span class="hljs-comment">######################################</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs txt">Status cpde: 200<br>Total repositories: 7353231<br>Respositories returned: 30 <br><br>Keys: 74<br>archive_url<br>archived<br>...<br></code></pre></td></tr></table></figure>
+<p>修改一下上述程序#####之间的程序段，以便能提取出我们想要的有关第一个字典（第一个仓库）的相关信息：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py">...<br><span class="hljs-comment">########################################################</span><br>repo_dict = repo_dicts[<span class="hljs-number">0</span>]<br>print(<span class="hljs-string">&quot;\nSelected information about first repository：&quot;</span>)<br>print(<span class="hljs-string">f&quot;Name: <span class="hljs-subst">&#123;repo_dict[<span class="hljs-string">&#x27;name&#x27;</span>]&#125;</span>&quot;</span>)<br>print(<span class="hljs-string">f&quot;Owner: <span class="hljs-subst">&#123;repo_dict[<span class="hljs-string">&#x27;owner&#x27;</span>][<span class="hljs-string">&#x27;login&#x27;</span>]&#125;</span>&quot;</span>)<br>print(<span class="hljs-string">f&quot;Stars: <span class="hljs-subst">&#123;repo_dict[<span class="hljs-string">&#x27;stargazers_count&#x27;</span>]&#125;</span>&quot;</span>)<br>print(<span class="hljs-string">f&quot;Repository: <span class="hljs-subst">&#123;repo_dict[<span class="hljs-string">&#x27;html_url&#x27;</span>]&#125;</span>&quot;</span>)<br><span class="hljs-comment">########################################################</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs txt">Status cpde: 200<br>Total repositories: 7278320<br>Respositories returned: 30<br><br>Selected information about first repository：<br>Name: system-design-primer<br>Owner: donnemartin<br>Stars: 133664<br>Repository: https://github.com/donnemartin/system-design-primer<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用Plotly可视化仓库"><a href="#使用Plotly可视化仓库" class="headerlink" title="使用Plotly可视化仓库"></a>使用Plotly可视化仓库</h3><p>（好吧，其实之前没写Plotly也有一部分是因为反正写到这儿也要写）</p>
+<h4 id="安装Plotly"><a href="#安装Plotly" class="headerlink" title="安装Plotly"></a>安装Plotly</h4><p><code>python -m pip install --user plotly</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># -!- coding: utf-8 -!-</span><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> plotly.graph_objs <span class="hljs-keyword">import</span> Bar<br><span class="hljs-keyword">from</span> plotly <span class="hljs-keyword">import</span> offline<br><br>url = <span class="hljs-string">&#x27;https://api.github.com/search/repositories?q=language:python&amp;sort=stars&#x27;</span><br>headers = &#123;<span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/vnd.github.v3+json&#x27;</span>&#125;<br>r = requests.get(url, headers=headers)<br>print(<span class="hljs-string">f&quot;Status code: <span class="hljs-subst">&#123;r.status_code&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 处理结果</span><br>response_dict = r.json()<br>repo_dicts = response_dict[<span class="hljs-string">&#x27;items&#x27;</span>]<br><span class="hljs-comment">################## NEW ##################</span><br>repo_names, stars = [], []<br><span class="hljs-keyword">for</span> repo_dict <span class="hljs-keyword">in</span> repo_dicts:<br>    repo_names.append(repo_dict[<span class="hljs-string">&#x27;name&#x27;</span>])<br>    stars.append(repo_dict[<span class="hljs-string">&#x27;stargazers_count&#x27;</span>])<br><br><span class="hljs-comment"># 可视化</span><br>data = [&#123; <span class="hljs-comment"># 列表data包含一个字典，指定图表的类型并提供xy值</span><br>    <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,<br>    <span class="hljs-string">&#x27;x&#x27;</span>: repo_names,<br>    <span class="hljs-string">&#x27;y&#x27;</span>: stars,<br>&#125;]<br>my_layout = &#123; <span class="hljs-comment"># 使用字典定义图表的布局</span><br>    <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;GitHub上最受欢迎的Python项目&#x27;</span>,<br>    <span class="hljs-string">&#x27;xaxis&#x27;</span>: &#123;<span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;Repository&#x27;</span>&#125;,<br>    <span class="hljs-string">&#x27;yaxis&#x27;</span>: &#123;<span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;Stars&#x27;</span>&#125;,<br>&#125;<br><br>fig = &#123;<br>    <span class="hljs-string">&#x27;data&#x27;</span>: data,<br>    <span class="hljs-string">&#x27;layout&#x27;</span>: my_layout,<br>&#125;<br>offline.plot(fig, filename=<span class="hljs-string">&#x27;python_repos.html&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.59w9u8awfcg0.png" srcset="/img/loading.gif" alt="image"></p>
+<h4 id="改进Plotly图表"><a href="#改进Plotly图表" class="headerlink" title="改进Plotly图表"></a>改进Plotly图表</h4><p>可以在 <strong>data</strong> 和 <strong>my_layout</strong> 中，以<strong>键值对</strong>的形式指定各种样式</p>
+<ol>
+<li>通过修改data，可以定制条形<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py">data = [&#123;<br>    <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,<br>    <span class="hljs-string">&#x27;x&#x27;</span>: repo_names,<br>    <span class="hljs-string">&#x27;y&#x27;</span>: stars,<br>    <span class="hljs-string">&#x27;marker&#x27;</span>: &#123;<br>        <span class="hljs-comment"># 条形颜色</span><br>        <span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;rgb(60, 100, 150)&#x27;</span>,<br>        <span class="hljs-comment"># 条形边框</span><br>        <span class="hljs-string">&#x27;line&#x27;</span>: &#123;<span class="hljs-string">&#x27;width&#x27;</span>: <span class="hljs-number">1.5</span>, <span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;rgb(25, 25, 25)&#x27;</span>&#125;<br>    &#125;,<br>    <span class="hljs-comment"># 条形不透明度</span><br>    <span class="hljs-string">&#x27;opacity&#x27;</span>: <span class="hljs-number">0.6</span>,<br>&#125;]<br></code></pre></td></tr></table></figure></li>
+<li>修改my_layout更改其他布局<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py">my_layout = &#123;<br>    <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;GitHub上最受欢迎的Python项目&#x27;</span>,<br>    <span class="hljs-string">&#x27;xaxis&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;Repository&#x27;</span>,<br>        <span class="hljs-string">&#x27;titlefont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">24</span>&#125;,<br>        <span class="hljs-string">&#x27;tickfont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">14</span>&#125;, <span class="hljs-comment"># 刻度标签字号</span><br>    &#125;,<br>    <span class="hljs-string">&#x27;yaxis&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;Stars&#x27;</span>,<br>        <span class="hljs-string">&#x27;titlefont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">24</span>&#125;,<br>        <span class="hljs-string">&#x27;tickfont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">14</span>&#125;, <span class="hljs-comment"># 刻度标签字号</span><br>    &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+效果如下：<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.7dz1sa9wzhc0.png" srcset="/img/loading.gif" alt="image"></li>
+</ol>
+<h5 id="添加自定义工具提示"><a href="#添加自定义工具提示" class="headerlink" title="添加自定义工具提示"></a>添加自定义工具提示</h5><p>在Plotly中，将鼠标指向条形将显示其表示的信息，称为<strong>工具提示</strong><br>下面来创建工具提示，以显示项目的描述和所有者</p>
+<p>为此，需要再提取一些信息并修改对象data</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs py">...<br><span class="hljs-comment"># 处理结果</span><br>response_dict = r.json()<br>repo_dicts = response_dict[<span class="hljs-string">&#x27;items&#x27;</span>]<br>repo_names, stars, labels = [], [], [] <span class="hljs-comment">#### NEW ####</span><br><span class="hljs-keyword">for</span> repo_dict <span class="hljs-keyword">in</span> repo_dicts:<br>    repo_names.append(repo_dict[<span class="hljs-string">&#x27;name&#x27;</span>])<br>    stars.append(repo_dict[<span class="hljs-string">&#x27;stargazers_count&#x27;</span>])<br><br>    <span class="hljs-comment">#### NEW ####</span><br>    owner = repo_dict[<span class="hljs-string">&#x27;owner&#x27;</span>][<span class="hljs-string">&#x27;login&#x27;</span>]<br>    description = repo_dict[<span class="hljs-string">&#x27;description&#x27;</span>]<br>    label = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;owner&#125;</span>&lt;br /&gt;<span class="hljs-subst">&#123;description&#125;</span>&quot;</span><br>    labels.append(label)<br><br><span class="hljs-comment"># 可视化</span><br>data = [&#123;<br>    <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,<br>    <span class="hljs-string">&#x27;x&#x27;</span>: repo_names,<br>    <span class="hljs-string">&#x27;y&#x27;</span>: stars,<br>    <span class="hljs-string">&#x27;hovertext&#x27;</span>: labels, <span class="hljs-comment">#### NEW ####</span><br>    <span class="hljs-string">&#x27;marker&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;rgb(60, 100, 150)&#x27;</span>,<br>        <span class="hljs-string">&#x27;line&#x27;</span>: &#123;<span class="hljs-string">&#x27;width&#x27;</span>: <span class="hljs-number">1.5</span>, <span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;rgb(25, 25, 25)&#x27;</span>&#125;<br>    &#125;,<br>    <span class="hljs-string">&#x27;opacity&#x27;</span>: <span class="hljs-number">0.6</span>,<br>&#125;]<br>my_layout = &#123;<br>...<br></code></pre></td></tr></table></figure>
+<p>新建一个空列表labels，用于存储要给各个项目（各个条形）显示的文本<br>Plotly允许在文本元素中使用<strong>HTML代码</strong>（注意规范的换行符 br 和 / 间有空格）</p>
+<p>效果如下：<br><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/img/image.11xbfy3ywfhs.png" srcset="/img/loading.gif" alt="image"></p>
+<h5 id="添加可单击的链接"><a href="#添加可单击的链接" class="headerlink" title="添加可单击的链接"></a>添加可单击的链接</h5><p>下面来实现点击x轴对应的项目名来跳转至相应的GitHub主页</p>
+<p>上文中，x轴对应的值的列表是<code>repo_names</code>，我们先改名为<code>repo_links</code>使程序更为清晰<br>修改处理结果的部分程序，并将data中x的数据源换为<code>repo_links</code></p>
+<p><strong>最终完整程序</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># -!- coding: utf-8 -!-</span><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> plotly.graph_objs <span class="hljs-keyword">import</span> Bar<br><span class="hljs-keyword">from</span> plotly <span class="hljs-keyword">import</span> offline<br><br>url = <span class="hljs-string">&#x27;https://api.github.com/search/repositories?q=language:python&amp;sort=stars&#x27;</span><br>headers = &#123;<span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/vnd.github.v3+json&#x27;</span>&#125;<br>r = requests.get(url, headers=headers)<br>print(<span class="hljs-string">f&quot;Status cpde: <span class="hljs-subst">&#123;r.status_code&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 处理结果</span><br>response_dict = r.json()<br>repo_dicts = response_dict[<span class="hljs-string">&#x27;items&#x27;</span>]<br>repo_links, stars, labels = [], [], [] <br><span class="hljs-keyword">for</span> repo_dict <span class="hljs-keyword">in</span> repo_dicts:<br>    repo_name = repo_dict[<span class="hljs-string">&#x27;name&#x27;</span>]<br>    repo_url = repo_dict[<span class="hljs-string">&#x27;html_url&#x27;</span>]<br>    repo_link = <span class="hljs-string">f&quot;&lt;a href=&#x27;<span class="hljs-subst">&#123;repo_url&#125;</span>&#x27;&gt;<span class="hljs-subst">&#123;repo_name&#125;</span>&lt;/a&gt;&quot;</span><br>    repo_links.append(repo_link)<br><br>    stars.append(repo_dict[<span class="hljs-string">&#x27;stargazers_count&#x27;</span>])<br><br>    owner = repo_dict[<span class="hljs-string">&#x27;owner&#x27;</span>][<span class="hljs-string">&#x27;login&#x27;</span>]<br>    description = repo_dict[<span class="hljs-string">&#x27;description&#x27;</span>]<br>    label = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;owner&#125;</span>&lt;br /&gt;<span class="hljs-subst">&#123;description&#125;</span>&quot;</span><br>    labels.append(label)<br><br><span class="hljs-comment"># 可视化</span><br>data = [&#123;<br>    <span class="hljs-string">&#x27;type&#x27;</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,<br>    <span class="hljs-string">&#x27;x&#x27;</span>: repo_links,<br>    <span class="hljs-string">&#x27;y&#x27;</span>: stars,<br>    <span class="hljs-string">&#x27;hovertext&#x27;</span>: labels, <br>    <span class="hljs-string">&#x27;marker&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;rgb(60, 100, 150)&#x27;</span>,<br>        <span class="hljs-string">&#x27;line&#x27;</span>: &#123;<span class="hljs-string">&#x27;width&#x27;</span>: <span class="hljs-number">1.5</span>, <span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;rgb(25, 25, 25)&#x27;</span>&#125;<br>    &#125;,<br>    <span class="hljs-string">&#x27;opacity&#x27;</span>: <span class="hljs-number">0.6</span>,<br>&#125;]<br>my_layout = &#123;<br>    <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;GitHub上最受欢迎的Python项目&#x27;</span>,<br>    <span class="hljs-string">&#x27;xaxis&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;Repository&#x27;</span>,<br>        <span class="hljs-string">&#x27;titlefont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">24</span>&#125;,<br>        <span class="hljs-string">&#x27;tickfont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">14</span>&#125;,<br>    &#125;,<br>    <span class="hljs-string">&#x27;yaxis&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;title&#x27;</span>: <span class="hljs-string">&#x27;Stars&#x27;</span>,<br>        <span class="hljs-string">&#x27;titlefont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">24</span>&#125;,<br>        <span class="hljs-string">&#x27;tickfont&#x27;</span>: &#123;<span class="hljs-string">&#x27;size&#x27;</span>: <span class="hljs-number">14</span>&#125;, <br>    &#125;,<br>&#125;<br><br>fig = &#123;<br>    <span class="hljs-string">&#x27;data&#x27;</span>: data,<br>    <span class="hljs-string">&#x27;layout&#x27;</span>: my_layout,<br>&#125;<br>offline.plot(fig, filename=<span class="hljs-string">&#x27;python_repos.html&#x27;</span>)<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/04/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java学习笔记1</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/01/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+                        <span class="hidden-mobile">Python学习笔记1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> ×  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
