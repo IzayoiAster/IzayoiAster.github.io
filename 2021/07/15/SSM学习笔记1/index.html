@@ -392,7 +392,7 @@
 <p>上述程序中的<code>@Import</code>参数其实是一个数组，可以同时导入多个配置文件：<code>@Import(&#123;a.class, b.class, c.class&#125;)</code></p>
 <p>目前的项目结构：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/20210715/image.ud5vtutzirk.png" srcset="/img/loading.gif" alt="image"></p>
-<h2 id="Junit"><a href="#Junit" class="headerlink" title="Junit"></a>Junit</h2><p>（摸了，用到再来补上）</p>
+<h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h2><p>（摸了，用到再来补上）</p>
 <h2 id="Spring集成web环境"><a href="#Spring集成web环境" class="headerlink" title="Spring集成web环境"></a>Spring集成web环境</h2><p>之前都只是拿假的web层来测试，这次要来真的咯~</p>
 <p>（从这里开始，网课又回到了xml开发，我就还用注解开发吧！）</p>
 <h3 id="前置JavaWeb知识"><a href="#前置JavaWeb知识" class="headerlink" title="前置JavaWeb知识"></a>前置JavaWeb知识</h3><p>（谁让我是弹射起步呢，害）</p>
@@ -570,7 +570,7 @@
 <p>别忘了导入mvn命名空间</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans</span></span><br><span class="hljs-tag"><span class="hljs-string">       http://www.springframework.org/schema/beans/spring-beans.xsd</span></span><br><span class="hljs-tag"><span class="hljs-string">       http://www.springframework.org/schema/context</span></span><br><span class="hljs-tag"><span class="hljs-string">       http://www.springframework.org/schema/context/spring-context.xsd</span></span><br><span class="hljs-tag"><span class="hljs-string">       http://www.springframework.org/schema/mvc</span></span><br><span class="hljs-tag"><span class="hljs-string">       http://www.springframework.org/schema/mvc/spring-mvc.xsd</span></span><br><span class="hljs-tag"><span class="hljs-string">       &quot;</span>&gt;</span><br><br>    <span class="hljs-comment">&lt;!--  Controller的组件扫描  --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">&quot;com.aster.controller&quot;</span>/&gt;</span><br><br>    <span class="hljs-comment">&lt;!--  mvc的注解驱动 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>/&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>其他的和**1.**一样，是不是简单了呢~</p>
+<p>其他的和 <strong>1.</strong> 一样，是不是简单了呢~</p>
 <p><strong>这句注解驱动很重要，以后的mvc配置文件都别忘了写哦</strong></p>
 <h2 id="SpringMVC的请求"><a href="#SpringMVC的请求" class="headerlink" title="SpringMVC的请求"></a>SpringMVC的请求</h2><h3 id="获得请求参数"><a href="#获得请求参数" class="headerlink" title="获得请求参数"></a>获得请求参数</h3><blockquote>
 <p>客户端请求参数的格式是<code>name=value&amp;name=value... ...</code></p>
@@ -603,7 +603,7 @@
 
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/aster_spring_web_war_exploded/u</span>ser/quick?strs=Izayoi&amp;strs=Aster&amp;strs=Izayoi&amp;strs=Lotus<br></code></pre></td></tr></table></figure>
 
-<h4 id="获得集合类型参数"><a href="#获得集合类型参数" class="headerlink" title="获得集合类型参数"></a>获得集合类型参数</h4><p><strong>1.（不推荐）</strong>获得集合参数时，要<strong>将集合包装到一个POJO中</strong>才行_（“SpringMVC是有极限的！”）_</p>
+<h4 id="获得集合类型参数"><a href="#获得集合类型参数" class="headerlink" title="获得集合类型参数"></a>获得集合类型参数</h4><p><strong>1.（不推荐）</strong>获得集合参数时，要<strong>将集合包装到一个POJO中</strong>才行 <em>（“SpringMVC是有极限的！”）</em></p>
 <p>即，<strong>不能直接封装集合</strong></p>
 <p>我们需要创建一个<strong>VO对象</strong>（ValueObject / ViewObject）来包装集合</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.domain;<br><br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VO</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> List&lt;User&gt; userList;<br><br>    <span class="hljs-comment">// getter setter toString</span><br>&#125;<br></code></pre></td></tr></table></figure>
@@ -619,7 +619,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-meta">@RequestMapping(&quot;/user&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;<br>    <span class="hljs-meta">@RequestMapping(&quot;/quick&quot;)</span><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">save</span> <span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> List&lt;User&gt; userList)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        System.out.println(userList);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>运行后访问/ajax.jsp子页面，打开控制台发现报错了：</p>
-<p><img src="C:\Users\25354\AppData\Roaming\Typora\typora-user-images\image-20211001170719969.png" srcset="/img/loading.gif" alt="image-20211001170719969"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/20210715/image-20211001170719969.xgbusky0txs.png" srcset="/img/loading.gif" alt="image-20211001170719969"></p>
 <p>这里涉及到静态资源访问权限问题，后面再说。现在姑且在spring-mvc.xml里添加：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mvc:resources</span> <span class="hljs-attr">mapping</span>=<span class="hljs-string">&quot;/js/**&quot;</span> <span class="hljs-attr">location</span>=<span class="hljs-string">&quot;/js/&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -705,7 +705,7 @@
 <p>众所周知，HTTP请求有请求行、请求头和请求数据</p>
 </blockquote>
 <p>偶尔，我们也需要用到请求头</p>
-<p>**1.**使用<code>@RequestHeader</code>（相当于web里的<code>request.getHeader(name)</code>）</p>
+<p><strong>1.</strong> 使用<code>@RequestHeader</code>（相当于web里的<code>request.getHeader(name)</code>）</p>
 <p>有两个属性：</p>
 <ul>
 <li>value：请求头的名称</li>
@@ -719,7 +719,7 @@
 
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Mozilla</span>/<span class="hljs-number">5</span>.<span class="hljs-number">0</span> (Windows NT <span class="hljs-number">10</span>.<span class="hljs-number">0</span>; Win<span class="hljs-number">64</span>; x<span class="hljs-number">64</span>) AppleWebKit/<span class="hljs-number">537</span>.<span class="hljs-number">36</span> (KHTML, like Gecko) Chrome/<span class="hljs-number">94</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4606</span>.<span class="hljs-number">61</span> Safari/<span class="hljs-number">537</span>.<span class="hljs-number">36</span> Edg/<span class="hljs-number">94.0.992.31</span><br></code></pre></td></tr></table></figure>
 
-<p>**2.**使用<code>@CookieValue</code>可以直接获取Cookie 的值，用法相同</p>
+<p><strong>2.</strong> 使用<code>@CookieValue</code>可以直接获取Cookie 的值，用法相同</p>
 <h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><p>文件上传客户端三要素：</p>
 <ul>
 <li>表单项<code>type = &quot;file&quot;</code></li>
@@ -783,9 +783,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/15/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01-LAPTOP-PLL5MDT2/">
+                      <a href="/2021/09/24/IDEA%E9%85%8D%E7%BD%AETomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSM学习笔记1-Spring</span>
+                        <span class="hidden-mobile">IDEA配置Tomcat服务器</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
