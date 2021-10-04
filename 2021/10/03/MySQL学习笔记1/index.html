@@ -20,9 +20,25 @@
   <meta name="author" content="十六夜紫菀 / IzayoiAster">
   <meta name="keywords" content="">
   
-  <title>归档 - 紫菀的小窝</title>
+  <title>MySQL学习笔记1 - 紫菀的小窝</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -50,7 +66,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -149,9 +165,31 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="MySQL学习笔记1">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-03 09:03" pubdate>
+        2021年10月3日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -164,40 +202,108 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 16 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/07/15/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SSM学习笔记1</span>
-      <time style="float: right;">07-15</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MySQL学习笔记1</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为学JdbcTemplate免不了用到一些MySQL，所以开一篇笔记随便记一记。以后认真深入学MySQL大概会写在学习笔记2里吧</p>
+<p>连接之后，右键连接可以新建一个数据库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.5wsbh0canqs0.png" srcset="/img/loading.gif" alt="image"></p>
+<p>排序规则这里，utf8_bin是大小写敏感，utf8_general_ci是大小写不敏感，按照需求选一个</p>
+<h2 id="Navicat的基本使用"><a href="#Navicat的基本使用" class="headerlink" title="Navicat的基本使用"></a>Navicat的基本使用</h2><h3 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h3><p>首先，一个表中需要设定唯一的一列键</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.5rhhu38zo7c0.png" srcset="/img/loading.gif" alt="image"></p>
+<p>假设我们建这个表最后叫info，存储一些用户信息</p>
+<p>那么肯定要添加name字段，类型是<strong>varchar：可变字符串</strong>（名字可长可短），不是null即意为必须填写，人肯定不能没有名字，至于age就无所谓了</p>
+<p>gender性别字段，采取<strong>enum枚举类型</strong>，需要<strong>编辑一下enum的值：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.1fil2xrykgf4.png" srcset="/img/loading.gif" alt="image"></p>
+<p>点击保存：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.4p3y3b3gwh40.png" srcset="/img/loading.gif" alt="image"></p>
+<p>右键设计表，可以对表进行更改：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.4x2o9qf0tqu0.png" srcset="/img/loading.gif" alt="image"></p>
+<h3 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h3><blockquote>
+<p>CRUD：增删改查（增加Create、检索Retrieve、更新Update、删除Delete）</p>
+</blockquote>
+<p>双击info进入可视化编辑</p>
+<p>点击左下角的 <strong>+ 或 -</strong> 增加或删除行，id会自动自增生成（如果前面有行被删了，id还是从被删之前的位置递增）</p>
+<p>写完一行后，点击左下角的 <strong>对勾√</strong> 保存，做出任何修改后，都要点击保存，否则无效</p>
+<p>（双击点开info之后，其实已经是处在查询的状态了）</p>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/03/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SSM学习笔记2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/30/%E5%85%B3%E4%BA%8EJMX%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/">
+                        <span class="hidden-mobile">关于JMX端口被占用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -278,9 +384,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
