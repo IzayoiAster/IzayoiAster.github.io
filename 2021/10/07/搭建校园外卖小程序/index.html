@@ -20,7 +20,7 @@
   <meta name="author" content="十六夜紫菀 / IzayoiAster">
   <meta name="keywords" content="">
   
-  <title>MySQL学习笔记1 - 紫菀的小窝</title>
+  <title>搭建校园外卖小程序 - 紫菀的小窝</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -165,7 +165,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="MySQL学习笔记1">
+            <span class="h2" id="subtitle" title="搭建校园外卖小程序">
               
             </span>
 
@@ -175,8 +175,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-03 09:03" pubdate>
-        2021年10月3日 上午
+      <time datetime="2021-10-07 15:29" pubdate>
+        2021年10月7日 下午
       </time>
     </span>
   
@@ -212,31 +212,42 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">MySQL学习笔记1</h1>
+            <h1 style="display: none">搭建校园外卖小程序</h1>
             
             <div class="markdown-body">
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为学JdbcTemplate免不了用到一些MySQL，所以开一篇笔记随便记一记。以后认真深入学MySQL大概会写在学习笔记2里吧</p>
-<p>连接之后，右键连接可以新建一个数据库</p>
-<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.5wsbh0canqs0.png" srcset="/img/loading.gif" alt="image"></p>
-<p>排序规则这里，utf8_bin是大小写敏感，utf8_general_ci是大小写不敏感，按照需求选一个</p>
-<h2 id="Navicat的基本使用"><a href="#Navicat的基本使用" class="headerlink" title="Navicat的基本使用"></a>Navicat的基本使用</h2><h3 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h3><p>首先，一个表中需要设定唯一的一列键</p>
-<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.5rhhu38zo7c0.png" srcset="/img/loading.gif" alt="image"></p>
-<p>假设我们建这个表最后叫info，存储一些用户信息</p>
-<p>那么肯定要添加name字段，类型是<strong>varchar：可变字符串</strong>（名字可长可短），不是null即意为必须填写，人肯定不能没有名字，至于age就无所谓了</p>
-<p>gender性别字段，采取<strong>enum枚举类型</strong>，需要<strong>编辑一下enum的值：</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.1fil2xrykgf4.png" srcset="/img/loading.gif" alt="image"></p>
-<p>点击保存：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.4p3y3b3gwh40.png" srcset="/img/loading.gif" alt="image"></p>
-<p>右键设计表，可以对表进行更改：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/MySQL1/image.4x2o9qf0tqu0.png" srcset="/img/loading.gif" alt="image"></p>
-<h3 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h3><blockquote>
-<p>CRUD：增删改查（增加Create、检索Retrieve、更新Update、删除Delete）</p>
-</blockquote>
-<p>双击info进入可视化编辑</p>
-<p>点击左下角的 <strong>+ 或 -</strong> 增加或删除行，id会自动自增生成（如果前面有行被删了，id还是从被删之前的位置递增）</p>
-<p>写完一行后，点击左下角的 <strong>对勾√</strong> 保存，做出任何修改后，都要点击保存，否则无效</p>
-<p>（双击点开info之后，其实已经是处在查询的状态了）</p>
-<p>IDEA里，连接MySQL后，可能需要手动在设置里勾选中需要显示出来的数据库</p>
+              <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为什么写这个呢？</p>
+<p>1.给组里的hxd们一个简单的项目入门指南</p>
+<p>**2.**因为我太菜了，只能对着半成品项目各种百度谷歌硬是啃出项目来，不记下来估计以后也忘得差不多了（逃）</p>
+<h3 id="一些安装"><a href="#一些安装" class="headerlink" title="一些安装"></a>一些安装</h3><p>首先不管是clone还是直接下载，总之把<a target="_blank" rel="noopener" href="https://gitee.com/microapp/flash-waimai">这个项目</a>给拿到本地（“拿来吧你！”）</p>
+<p>（因为是MIT License所以不慌）</p>
+<p>然后，安装MySQL（我是8.0版本），我记得傻瓜式全按照默认点下去就行了，有个配置用户名和密码的地方记号用户名密码，一般自己的机器用最简单的root root或root 000000就行，之后弹出的各种窗口（如果有）也全按照默认点下去</p>
+<p>（我建议去找个新一点的安装教程看）</p>
+<p>然后，安装另一个数据库MongoDB，下载<strong>4.0版本</strong>之后可以点Custom安装到喜欢的目录，之后有一布左下角会勾选“安装MongoDB Compass”，据说自带的这个安装很慢，不要选，稍后自己安装或者去申请个教育版Navicat</p>
+<p>安装好之后，找一个喜欢的地方，新建一个DB文件夹<strong>（这些都是我的个人习惯，按照自己喜欢的方法来都行的）</strong>，里面再建data和log文件夹</p>
+<p>然后，找到你刚才安装Mongo的位置，点进里面的bin文件夹，shift右键打开Powershell / cmd，输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongod -dbpath D:\Development\MongoDB\DB\data<br><span class="hljs-meta">#</span><span class="bash"> 或者Powershell可能要加.\</span><br><span class="bash">.\mongod -dbpath D:\Development\MongoDB\DB\data</span><br></code></pre></td></tr></table></figure>
+
+<p>这句话是告诉Mongo，数据要存在这个路径</p>
+<p>然后，在bin的同级目录创建一个mongodb.config（名字随意），在里面写</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">dbpath = D:<span class="hljs-symbol">\D</span>evelopment<span class="hljs-symbol">\M</span>ongoDB<span class="hljs-symbol">\D</span>B<span class="hljs-symbol">\d</span>ata<br>logpath = D:<span class="hljs-symbol">\D</span>evelopment<span class="hljs-symbol">\M</span>ongoDB<span class="hljs-symbol">\D</span>B<span class="hljs-symbol">\l</span>og<span class="hljs-symbol">\m</span>ongodb.log<br></code></pre></td></tr></table></figure>
+
+<p>接着，在之前打开cmd的那个bin文件夹里，再次打开cmd输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongod --config D:\Development\MongoDB\Server\4.0\mongodb.config --install -serviceName &quot;MongoDB&quot;<br></code></pre></td></tr></table></figure>
+
+<p>这一步是告诉mongodb配置文件在哪，并将mongodb作为系统服务启动</p>
+<p>Win + R，输入services.msc，找到有没有MongoDB之类名字的服务，双击打开，检查是不是这样设置：</p>
+<img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/CampusWaimai/image.75liwk0o7f8.png" srcset="/img/loading.gif" alt="image" style="zoom:50%;" />
+
+<p>另外，每次运行相关指令的时候都要去bin目录很麻烦，可以在系统变量里配置一个MONGODB_HOME再配一下Path，具体看Java怎么配就知道Mongo怎么配了</p>
+<p>然后，还要安装Node.js，但我实在是好久好久之前安装的了，不记得了，建议去百度（逃）</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-npm.html">NPM 使用介绍 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="启动项目试一试"><a href="#启动项目试一试" class="headerlink" title="启动项目试一试"></a>启动项目试一试</h3><p>首先，用IDEA打开那个flash-waimai-master项目文件夹，等IDEA导入一些配置</p>
+<p>问题一：</p>
+<p><img src="C:\Users\25354\AppData\Roaming\Typora\typora-user-images\image-20211007182251924.png" srcset="/img/loading.gif" alt="image-20211007182251924"></p>
+<p>解决一：用jdk8；jdk8永远的爷！</p>
+<p>问题二：测试图片怎么导呢？</p>
+<p>先启动一下api，然后刷新一下mysql，往这里写：</p>
+<p><img src="C:\Users\25354\AppData\Roaming\Typora\typora-user-images\image-20211007185249080.png" srcset="/img/loading.gif" alt="image-20211007185249080"></p>
 
             </div>
             <hr>
@@ -247,7 +258,13 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/MySQL/">MySQL</a>
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring/">Spring</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%A1%B9%E7%9B%AE/">项目</a>
                     
                   </div>
                 
@@ -264,18 +281,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/%E8%A7%A3%E5%86%B3IDEA%E7%BC%BA%E5%B0%91jsp%E3%80%81Spring%E7%AD%89%E7%9B%B8%E5%85%B3%E6%8F%90%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">解决IDEA缺少jsp、Spring等相关提示的问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/30/%E5%85%B3%E4%BA%8EJMX%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/">
-                        <span class="hidden-mobile">关于JMX端口被占用</span>
+                      <a href="/2021/10/05/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+                        <span class="hidden-mobile">SpringBoot学习笔记1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
