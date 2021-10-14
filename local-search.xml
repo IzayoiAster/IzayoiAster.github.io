@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>SpringBoot学习笔记2</title>
+    <link href="/2021/10/14/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/"/>
+    <url>/2021/10/14/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为什么又开了个2呢……</p><p>和SSM的不同，这个是因为那个SpringBoot1的课实在是条理太乱了，讲得也太深入，不是很适合……</p><p>但是删是不可能删的，开个2得了</p><p>（经典弹射起步）</p><h3 id="SpringBoot整合MyBatis"><a href="#SpringBoot整合MyBatis" class="headerlink" title="SpringBoot整合MyBatis"></a>SpringBoot整合MyBatis</h3><p>经典Initializr（当然这里只导了mybatis用到的）</p><p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/SpringBoot2/image.78jegnjqhno0.png" alt="image"></p><p>（直接就用SSM2最后的那个account表来测试了）</p><p>实体类</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@ToString</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> money;<br>&#125;<br></code></pre></td></tr></table></figure><p>配置配置文件（输入datasource就自动有提示补全了，SpringBoot1笔记里那个课还要配置补全，太过时了……）</p><p>（jdbc:mysql:///ssm 是那个典中典地址的简单写法）</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql:///springboot</span><br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br>    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-string">root</span><br></code></pre></td></tr></table></figure><p>注解开发不用写MyBatis的配置信息，因为我是注解，就不写了，xml用到再回来看</p><p>UserMapper.java</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.testbatis.mapper;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Mapper</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserMapper</span> </span>&#123;<br><br>    <span class="hljs-meta">@Select(&quot;SELECT * FROM account&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;User&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-meta">@Insert(&quot;INSERT INTO account VALUES(#&#123;id&#125;, #&#123;name&#125;, #&#123;money&#125;)&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(User user)</span></span>;<br><br>&#125;<br></code></pre></td></tr></table></figure><p>测试：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.testbatis;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestbatisApplicationTests</span> </span>&#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserMapper userMapper;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindAll</span><span class="hljs-params">()</span> </span>&#123;<br>        List&lt;User&gt; userList = userMapper.findAll();<br>        System.out.println(userList); <span class="hljs-comment">// [User(id=1, name=aster, money=16.66)]</span><br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testInsert</span><span class="hljs-params">()</span> </span>&#123;<br>        userMapper.insert(<span class="hljs-keyword">new</span> User(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;aster&quot;</span>, <span class="hljs-number">16.66</span>));<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/SpringBoot2/image.6dtx2q8g8tc.png" alt="image"></p><p><strong>上面这些就是所有的代码了</strong></p><p><strong>太他妈爽了！SpringBoot真是让SSM简单太太太太太太太太太多了！！！</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Spring</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>table</title>
+    <link href="/2021/10/14/%E5%85%B3%E4%BA%8EIDEA%E7%9A%84Unable%20to%20resolve%20table/"/>
+    <url>/2021/10/14/%E5%85%B3%E4%BA%8EIDEA%E7%9A%84Unable%20to%20resolve%20table/</url>
+    
+    <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title="."></a>.</h1><p>一时没有一个看起来靠谱的方案</p><p>但是有个凑合的：写table的全限定名</p><p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Other/image.7kuyd0dezi0.png" alt="image"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>IDEA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>搭建校园外卖小程序</title>
     <link href="/2021/10/07/%E6%90%AD%E5%BB%BA%E6%A0%A1%E5%9B%AD%E5%A4%96%E5%8D%96%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     <url>/2021/10/07/%E6%90%AD%E5%BB%BA%E6%A0%A1%E5%9B%AD%E5%A4%96%E5%8D%96%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
@@ -14,11 +52,11 @@
     
     <tags>
       
+      <tag>Spring</tag>
+      
       <tag>Java</tag>
       
       <tag>Vue</tag>
-      
-      <tag>Spring</tag>
       
       <tag>项目</tag>
       
@@ -39,9 +77,9 @@
     
     <tags>
       
-      <tag>Java</tag>
-      
       <tag>Spring</tag>
+      
+      <tag>Java</tag>
       
       <tag>SpringBoot</tag>
       
