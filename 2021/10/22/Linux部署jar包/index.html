@@ -217,9 +217,9 @@
             <div class="markdown-body">
               <p>Java MySQL这些环境的配置就不说了<br>SpringBoot导够那些依赖之后，IDEA右边那个maven选项卡在Lifecircle里运行package，会生成一个jar包，传到linux里喜欢的地方</p>
 <p>（顺便要是部署的时候想关闭程序，输<code>ps aux</code>就能列出进程和进程号；不过如果是简单的控制台java -jar的话Ctrl + C就行）</p>
-<p>然后，也可以这样（当然这里没在运行，如果在运行就<code>kill -9 进程号（第一个）</code>）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@iZ0jl38ljn8gs6phcrziyjZ waimai]# ps -ef|grep ices-waimai-api-0.0.1-SNAPSHOT.jar <br>root        6217    5577  0 17:36 pts/1    00:00:00 grep --color=auto ices-waimai-api-0.0.1-SNAPSHOT.jar<br></code></pre></td></tr></table></figure>
-
+<p><code>ps -ef|grep xxx.jar</code>，或者像下面这样，列出所有java进程</p>
+<p>然后<code>kill -9 进程号</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Other/image.51wrb33gweg0.png" srcset="/img/loading.gif" alt="image"></p>
 <h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p>1.使用命令  firewall-cmd –state查看防火墙状态。得到结果是running或者not running<br>2.在running 状态下，向firewall 添加需要开放的端口<br>命令为 firewall-cmd –permanent –zone=public –add-port=8080/tcp //永久的添加该端口。去掉–permanent则表示临时。<br>4.firewall-cmd –reload //加载配置，使得修改有效。<br>5.使用命令 firewall-cmd –permanent –zone=public –list-ports //查看开启的端口，出现8080/tcp这开启正确<br>6.再次使用外部浏览器访问，这出现tomcat的欢迎界面。</p>
 <p>补充（CentOS7以下有专门的防火墙操作命令）：<br>开启防火墙的命令<br>     systemctl start firewalld.service<br>关闭防火墙的命令<br>    systemctl stop firewalld.service<br>开机自动启动<br>    systemctl enable firewalld.service<br>关闭开机自动启动<br>    systemctl disable firewalld.service<br>查看防火墙状态<br>    systemctl status firewalld下列显示表示没有问题。</p>
 <p>但是发现还是没法从外界访问<code>服务器ip地址:端口号</code></p>
