@@ -218,8 +218,8 @@
               <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为什么又开了个2呢……</p>
 <p>和SSM的不同，这个是因为那个SpringBoot1的课实在是条理太乱了，讲得也太深入，不是很适合……</p>
 <p>但是删是不可能删的，开个2得了</p>
-<p>（经典弹射起步）</p>
-<h3 id="SpringBoot整合MyBatis"><a href="#SpringBoot整合MyBatis" class="headerlink" title="SpringBoot整合MyBatis"></a>SpringBoot整合MyBatis</h3><p>经典Initializr（当然这里只导了mybatis用到的）</p>
+<p>（经典弹射起步）<br>（也主要是因为这之前的没必要写了）</p>
+<h1 id="SpringBoot整合MyBatis"><a href="#SpringBoot整合MyBatis" class="headerlink" title="SpringBoot整合MyBatis"></a>SpringBoot整合MyBatis</h1><p>经典Initializr（当然这里只导了mybatis用到的）</p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/SpringBoot2/image.78jegnjqhno0.png" srcset="/img/loading.gif" alt="image"></p>
 <p>（直接就用SSM2最后的那个account表来测试了）</p>
 <p>实体类</p>
@@ -239,6 +239,76 @@
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/SpringBoot2/image.6dtx2q8g8tc.png" srcset="/img/loading.gif" alt="image"></p>
 <p><strong>上面这些就是所有的代码了</strong></p>
 <p><strong>太他妈爽了！SpringBoot真是让SSM简单太太太太太太太太太多了！！！</strong></p>
+<h1 id="SpringBoot原理分析"><a href="#SpringBoot原理分析" class="headerlink" title="SpringBoot原理分析"></a>SpringBoot原理分析</h1><h2 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h2><h3 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h3><p>Condition是条件判断，通过它可以<strong>选择性地</strong>创建Bean</p>
+<p>例如：<strong>如果有Jeids坐标，就不注入User，否则注入User</strong></p>
+<p>建一个空的springboot项目</p>
+<p>实体类（略）</p>
+<p><strong>配置类：</strong>（以前没怎么这样写，所以加粗了）</p>
+<p>（再次注意哦，要在配置类里定义Bean）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.test.config;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserConfig</span> </span>&#123;<br><br>    <span class="hljs-meta">@Bean</span> <span class="hljs-comment">// 放入容器</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">user</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User();<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.test;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestApplication</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">// 启动SpringBoot应用，获取IOC容器</span><br>        ConfigurableApplicationContext context = SpringApplication.run(TestApplication.class, args);<br><br>        User user = (User) context.getBean(<span class="hljs-string">&quot;user&quot;</span>);<br>        System.out.println(user);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>显然，上面的程序是能输出一个user实体的</p>
+<p>我们在UserConfig上加一个**@Conditional<strong>注解，在注解内需要放置</strong>实现了Condition接口**的类字节码（是context包里的，别导错了）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.test.config;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@Conditional(ClassCondition.class)</span> <span class="hljs-comment">// &lt;----</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserConfig</span> </span>&#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">user</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User();<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.test.condition;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassCondition</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Condition</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">matches</span><span class="hljs-params">(ConditionContext context, AnnotatedTypeMetadata metadata)</span> </span>&#123;<br>        <span class="hljs-keyword">boolean</span> flag = <span class="hljs-keyword">true</span>;<br>        <span class="hljs-keyword">try</span> &#123; <span class="hljs-comment">// 判断redis.clients.jedis.Jedis.class是否存在</span><br>            Class&lt;?&gt; cls = Class.forName(<span class="hljs-string">&quot;redis.clients.jedis.Jedis&quot;</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>            flag = <span class="hljs-keyword">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> flag;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>显然，当有下面的依赖的时候，能找到user，当没有的时候，就找不到了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>redis.clients<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jedis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>更进一步，<strong>将类的判断定义为动态的。即判断哪个字节码文件存在可以动态指定。</strong></p>
+<p><strong>自定义一个注解</strong>@ConditionOnClass</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.test.condition;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-comment">// 以下三个是直接复制过来的@Conditinal内的注解</span><br><span class="hljs-meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span> <span class="hljs-comment">// 作用在类和方法上</span><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span> <span class="hljs-comment">// 运行时生效</span><br><span class="hljs-meta">@Documented</span><br><br><span class="hljs-meta">@Conditional(ClassCondition.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> ConditionOnClass &#123;<br>    String[] value(); <span class="hljs-comment">// 可能有多个条件，所以用数组</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>随记两个小知识：1.在方法上敲/**回车，自动生成方法说明的模板；2.敲iter自动生成迭代形式的for</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.aster.test.condition;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassCondition</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Condition</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> context 上下文对象，用于获取环境、IOC容器、ClassLoader对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> metadata 注解元对象，可以用于获取注解定义的属性值</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">matches</span><span class="hljs-params">(ConditionContext context, AnnotatedTypeMetadata metadata)</span> </span>&#123;<br>        <span class="hljs-comment">// 需求：导入通过注解属性值value指定的坐标后才创建Bean</span><br>        <br>        <span class="hljs-comment">// 获取注解属性值value</span><br>        Map&lt;String, Object&gt; map = metadata.getAnnotationAttributes(ConditionOnClass.class.getName());<br>        String[] value = (String[]) map.get(<span class="hljs-string">&quot;value&quot;</span>);<br>        <span class="hljs-keyword">boolean</span> flag = <span class="hljs-keyword">true</span>;<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">for</span> (String className : value) &#123;<br>                Class&lt;?&gt; cls = Class.forName(className);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>            flag = <span class="hljs-keyword">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> flag;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>那么，说回原理分析，SpringBoot是如何帮我们自动创建Bean的呢？当我们引入对应的starter之后，SpringBoot就会通过Condition对应的starter从而得知要创建Bean</p>
+<p>然后你就会发现，上面的东西白学了（典中典），SpringBoot提供了一堆类似的注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-meta">@ConditionalOnClass(&quot;xxxxx&quot;)</span><br><span class="hljs-meta">@ConditionalOnProperty(name = &quot;xxx&quot;, havingValue = &quot;xxx&quot;)</span> <span class="hljs-comment">// 当配置文件里有name: value后再执行</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="切换内置web服务器"><a href="#切换内置web服务器" class="headerlink" title="切换内置web服务器"></a>切换内置web服务器</h3><p>（暂略）</p>
+<h3 id="Enable…"><a href="#Enable…" class="headerlink" title="@Enable…"></a>@Enable…</h3><p> springboot中有很多Enable开头的注解，用于动态启动某些功能。底层原理是使用@Import导入一些配置类，实现Bean的动态加载</p>
+<p>SpringBoot工程是<strong>不可以</strong>直接获取别的jar包中定义的Bean的</p>
+<p>因为@SpringBootApplication内的@ComponentScan的范围是当前引导类所在包及其子包，就算在pom.xml里导坐标了，也扫不到外面的东西</p>
+<p><strong>解决方案1：</strong>使用**@Import**注解加载类，被加载的类都会被Spring创建，并被放入IOC容器</p>
+<p>但是这个方案也挺麻烦，和配置一堆@ComponentScan没多大区别</p>
+<p><strong>解决方案2：</strong>声明注解@EnableUser（假如说是在外面定义了个User类想要注入），在这个注解内写好@Import等，然后在需要用到的其他地方@EnableUser即可</p>
+<h3 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h3><p>既然上面的Enable底层是Import，来看一下Import</p>
+<p>Import有四种用法：</p>
+<ul>
+<li>导入Bean</li>
+<li>导入配置类</li>
+<li>导入ImportSelector实现类，一般用于加载配置文件中的类</li>
+<li>导入ImportBeanDefinitionRegistrar实现类</li>
+</ul>
+<h4 id="直接导入bean"><a href="#直接导入bean" class="headerlink" title="直接导入bean"></a>直接导入bean</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Import(User.class)</span><br></code></pre></td></tr></table></figure>
+
+<p>导入后的名称是类的全限定名</p>
+<h4 id="导入配置类"><a href="#导入配置类" class="headerlink" title="导入配置类"></a>导入配置类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Import(MyConfig.class)</span><br></code></pre></td></tr></table></figure>
+
+<p>这样一来，MyConfig内所有声明的Bean都会被导入（这种情况下，配置类的@Configuration注解可以不写）</p>
+<h4 id="导入ImportSelector的实现类"><a href="#导入ImportSelector的实现类" class="headerlink" title="导入ImportSelector的实现类"></a>导入ImportSelector的实现类</h4><p>（暂略）</p>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>SpringBoot的监听机制其实是对Java的监听机制的封装</p>
+<p>Java中的事件监听机制定义了以下的几个角色：</p>
+<ol>
+<li>事件Event：继承java.util.EventObject类的对象</li>
+<li>事件源Source：任意对象Object</li>
+<li>监听器Listener：实现java.util.EventListener接口的对象</li>
+</ol>
+<p>SpringBoot在项目启动的时候，会对几个监听器进行回调，我们可以实现这些监听器接口，在项目启动时完成一些操作：ApplicationContextInitializer, SpringApplicationRunListener, CommandLineRunner, ApplicationRunner</p>
+<p>[（看了，暂不记）](<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Lq4y1J77x?p=28">黑马程序员SpringBoot教程，6小时快速入门Java微服务架构Spring Boot_哔哩哔哩_bilibili</a>)</p>
+<h2 id="启动流程分析"><a href="#启动流程分析" class="headerlink" title="启动流程分析"></a>启动流程分析</h2><h1 id="SpringBoot项目部署"><a href="#SpringBoot项目部署" class="headerlink" title="SpringBoot项目部署"></a>SpringBoot项目部署</h1><p>支持两种方式部署到服务器：jar（官方推荐） /  war</p>
+<p>在笔记1里也学过，在右边的Maven选项里执行package</p>
+<p>然后，java -jar .\xxxxxx.jar 就行了</p>
+<p>（war暂略）</p>
 
             </div>
             <hr>
@@ -265,6 +335,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/10/22/%E8%A7%A3%E5%86%B3MyBatis%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E9%9D%9Enull%E7%9A%84%E5%80%BC%E6%98%BE%E7%A4%BA%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">解决MyBatis在浏览器返回json非null的值显示为null的问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

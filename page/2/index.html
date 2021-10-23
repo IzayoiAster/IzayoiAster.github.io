@@ -184,6 +184,200 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/10/03/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">MySQL学习笔记1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/03/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+          
+          
+            
+          
+          前言因为学JdbcTemplate免不了用到一些MySQL，所以开一篇笔记随便记一记。以后认真深入学MySQL大概会写在学习笔记2里吧
+连接之后，右键连接可以新建一个数据库
+
+排序规则这里，utf8_bin是大小写敏感，utf8_general_ci是大小写不敏感，按照需求选一个
+Navicat的基本使用建表首先，一个表中需要设定唯一的一列键
+
+假设我们建这个表最后叫info，存储一些用户信息
+那
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-03 09:03" pubdate>
+              2021-10-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MySQL/">MySQL</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/30/%E5%85%B3%E4%BA%8EJMX%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/">关于JMX端口被占用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/30/%E5%85%B3%E4%BA%8EJMX%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/">
+          
+          
+            
+          
+          12netstat -aon|findstr 1099taskkill -f -pid xxxx
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-30 15:20" pubdate>
+              2021-09-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JMX/">JMX</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/24/IDEA%E9%85%8D%E7%BD%AETomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/">IDEA配置Tomcat服务器</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/24/IDEA%E9%85%8D%E7%BD%AETomcat%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+          
+          
+            
+          
+          安装Tomcat简单说说：在官网下载windows x64的zip包，然后解压到你喜欢的文件夹就好
+点击bin里的startup.bat后访问localhost:8080就能测试了
+IDEA配置
+确保项目结构里这两项勾选
+
+右上角编辑配置，点开后选择 Tomcat本地
+
+之后，IDEA会提示缺少工件，如果已经有xxxx:war exploded，就选上
+如果不自带工件，看图：
+
+如果还有问题就看这
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-24 16:29" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Tomcat/">Tomcat</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/15/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">SSM学习笔记1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/15/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+          
+          
+            
+          
+          Spring
+前置小抱怨：由于一直一来我觉得屏幕不小所以都没隐藏收藏栏导致前面很大一部分的网页截图有收藏栏很难看555，后来隐藏了才发现并没有麻烦多少而且好看多了Orz
+
+入门前置小知识：JavaSE经典三层架构是web层、业务/service层、DAO层
+
+web层：获取浏览器提交的数据，或者将数据返回给浏览器
+业务层：专门用来处理业务逻辑
+DAO层：专门用来和数据库进行交互
+
+
+tips: C
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-15 17:55" pubdate>
+              2021-07-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring/">Spring</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/06/04/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">Java学习笔记1</a>
       </h1>
 
@@ -438,195 +632,11 @@ slf4j报错（未知解决方案）
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/15/%E5%85%B3%E4%BA%8ESSH%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%92%E7%BB%9D%E4%BA%86%E5%AF%86%E7%A0%81/">关于“SSH服务器拒绝了密码”</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/15/%E5%85%B3%E4%BA%8ESSH%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8B%92%E7%BB%9D%E4%BA%86%E5%AF%86%E7%A0%81/">
-          
-          
-            
-          
-          今天跟着学Hadoop，Xshell硬是连不上，搜到一个百度经验笑死我了——
-
-…（前面一堆指令）5/7如果走到这一步你发现你的配置并没有哪里错了那么我们就是道友了。。。回到Xshell找到你的虚拟机右键进入属性6/7把大写用户名改成小写，确定7/7连接上了。。。
-
-没想到有人和我一样傻哈哈哈
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-15 16:02" pubdate>
-              2021-03-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hadoop/">Hadoop</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/14/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">Hadoop学习笔记1</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/14/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-          
-          
-            
-          
-          Hadoop分为存储和计算
-
-存储：HDFS
-计算：MapReduce
-
-HDFS文件系统HDFS（Hadoop Distributed File System, Hadoop分布式文件系统）NameNode → 多个DataNodes
-
-NameNode: 文件在哪
-DataNodes: 存数据
-2NN: 负责备份NN
-
-Yarn架构YARN （Yet Another Resource Nego
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-14 23:40" pubdate>
-              2021-03-14
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hadoop/">Hadoop</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/13/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E9%9B%B6%E7%AF%87%E5%8D%9A%E5%AE%A2/">紫菀的第零篇博客</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/13/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E9%9B%B6%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-          
-          
-            
-          
-          为什么是第零篇呢？因为算是一个全新开始吧
-昨天受DH启发，去咨询了一下LCS，没想到直接就进了LCS的实验室？！研究方向是大数据，目前交给我的任务是搭建一个Hadoop
-既是大数据，又是Java，好耶！十六夜紫菀，冲冲冲💪
-另外，虽然咨询哈深的学长说，ACM能搞就搞，但是结合我自身的竞赛体会以及知乎上众多回答，我还是决定不打ACM了 （当然，算法课肯定是要上的，算法题也不能停下来）。ACM这个东
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-13 18:54" pubdate>
-              2021-03-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%B4%AB%E8%8F%80/">紫菀</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/12/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">紫菀的第一篇博客</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/12/%E7%B4%AB%E8%8F%80%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-          
-          
-            
-          
-          一些闲话：之前参加冰峰实验室的纳新，因为大一年度项目是微信小程序（实际上路子在这一步就走错了，我应该更有主见一点不应该顺着老师的意思），就想着要是加入实验室的微信小程序纳新方向，岂不是一石二鸟。
-不过脑子一热上了贼船，做了好几次纳新作业之后，我才逐渐回过神来————首先我这个人对微信有一种说不上来的讨厌；其次，微信小程序被腾讯限制了生态，很多学到的东西只能用在微信上，学这玩意儿太亏了；最后，我虽然
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-12 10:25" pubdate>
-              2021-03-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%B4%AB%E8%8F%80/">紫菀</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
