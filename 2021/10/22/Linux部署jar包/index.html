@@ -220,8 +220,11 @@
 <p><code>ps -ef|grep xxx.jar</code>，或者像下面这样，列出所有java进程</p>
 <p>然后<code>kill -9 进程号</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Other/image.51wrb33gweg0.png" srcset="/img/loading.gif" alt="image"></p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p>1.使用命令  firewall-cmd –state查看防火墙状态。得到结果是running或者not running<br>2.在running 状态下，向firewall 添加需要开放的端口<br>命令为 firewall-cmd –permanent –zone=public –add-port=8080/tcp //永久的添加该端口。去掉–permanent则表示临时。<br>4.firewall-cmd –reload //加载配置，使得修改有效。<br>5.使用命令 firewall-cmd –permanent –zone=public –list-ports //查看开启的端口，出现8080/tcp这开启正确<br>6.再次使用外部浏览器访问，这出现tomcat的欢迎界面。</p>
-<p>补充（CentOS7以下有专门的防火墙操作命令）：<br>开启防火墙的命令<br>     systemctl start firewalld.service<br>关闭防火墙的命令<br>    systemctl stop firewalld.service<br>开机自动启动<br>    systemctl enable firewalld.service<br>关闭开机自动启动<br>    systemctl disable firewalld.service<br>查看防火墙状态<br>    systemctl status firewalld下列显示表示没有问题。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p>1.使用命令 <code>firewall-cmd --state</code>查看防火墙状态。得到结果是running或者not running<br>2.在running 状态下，向firewall 添加需要开放的端口：<br><code>firewall-cmd --permanent --zone=public --add-port=8080/tcp</code>  永久添加端口，去掉 –permanent 则表示临时<br>3.<code>firewall-cmd --reload</code>  加载配置，使得修改有效。<br>4.<code>firewall-cmd --permanent --zone=public --list-ports</code> 查看开启的端口里是否成功添加</p>
+<blockquote>
+<p>p.s.CentOS7以下有专门的防火墙操作命令（我的那个阿里云也是）</p>
+<p>开启防火墙：<code>systemctl start firewalld.service</code><br>关闭防火墙：<code>systemctl stop firewalld.service</code><br>开机自动启动： <code>systemctl enable firewalld.service</code><br>关闭开机自动启动： <code>systemctl disable firewalld.service</code><br>查看防火墙状态：<code>systemctl status firewalld</code></p>
+</blockquote>
 <p>但是发现还是没法从外界访问<code>服务器ip地址:端口号</code></p>
 <p>然后想起来，哦，阿里云那边的安全组放行我还没配来着</p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/%E6%9D%82%E5%9B%BE/image.4wil5g4gglk0.png" srcset="/img/loading.gif" alt="image"></p>
