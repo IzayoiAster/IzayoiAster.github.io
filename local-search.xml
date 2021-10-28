@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>解决IDEA新建项目时总是使用自带Maven的问题</title>
+    <link href="/2021/10/28/%E8%A7%A3%E5%86%B3IDEA%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%80%BB%E6%98%AF%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B8%A6Maven%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/10/28/%E8%A7%A3%E5%86%B3IDEA%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%80%BB%E6%98%AF%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B8%A6Maven%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>网上的方法（修改project.defalt.xml / Default Settings）都是过时的方法，我的版本（2021.2.3）已经不能用了，最后自己给摸索出来了：</p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Other/image.4ulnuwqnf8g0.png" alt="image" style="zoom:40%;" />]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Maven</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>解决spring-boot-maven-plugin报错</title>
     <link href="/2021/10/28/%E8%A7%A3%E5%86%B3spring-boot-maven-plugin%E6%8A%A5%E9%94%99/"/>
     <url>/2021/10/28/%E8%A7%A3%E5%86%B3spring-boot-maven-plugin%E6%8A%A5%E9%94%99/</url>
