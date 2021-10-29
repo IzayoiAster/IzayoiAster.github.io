@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  
+    <meta name="description" content="">
+  
+  <meta name="author" content="十六夜紫菀 / IzayoiAster">
+  <meta name="keywords" content="">
+  
+  <title>捣鼓Linux的一些笔记 - 紫菀的小窝</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Aster's nest</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="捣鼓Linux的一些笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-26 10:10" pubdate>
+        2021年10月26日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">捣鼓Linux的一些笔记</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>前言：最近正好又用到了服务器，给笔记本装个Linux玩玩</p>
+<p>（反正是玩玩，装了个最简单(?)的Ubuntu 20.04）</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.8rvznry95v8.png" srcset="/img/loading.gif" alt="半天的成果"></p>
+<p>首先在<strong>软件与更新</strong>里换上清华的源 <del>（什么？你说我是哈工大的学生为什么不用哈工大的源？）</del></p>
+<p>然后下载一个Chrome，对于deb格式要这么安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo dpkg -i xxxx.deb<br></code></pre></td></tr></table></figure>
+
+<p>既然我在写这个文章，说明我已经安装了Typora</p>
+<p>在Typora官网下载压缩包之后解压（tar -zxvf），解压出来的bin目录里面有个typora的文件夹挪到（草，这个自带的输入法是真的<del>男用</del>难用，写完这个我装完KDE第一件事一定要去装个搜狗输入法（虽然之前说🐶都不用，那是因为微软的输入法还行）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/2021-10-26-10-14-28-%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.qoc2uo6mops.png" srcset="/img/loading.gif" alt="2021-10-26-10-14-28-的屏幕截图"></p>
+<p>挪到/opt里，我看网上说什么还要配置权限但是我的并不需要</p>
+<p>接下来把他添加到应用列表里：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh">izayoiaster@Aster-Laptop:/opt/Typora-linux-x64$ vim typora.desktop <br>izayoiaster@Aster-Laptop:/opt/Typora-linux-x64$ sudo cp typora.desktop /usr/share/applications/<br>izayoiaster@Aster-Laptop:/opt/Typora-linux-x64$ cat typora.desktop <br>[Desktop Entry]<br>Name=Typora<br>Exec=/opt/Typora-linux-x64/Typora<br>Type=Application<br>Icon=/opt/Typora-linux-x64/resources/assets/icon/icon_512x512.png<br></code></pre></td></tr></table></figure>
+
+
+
+<p>算了，太难受了这个输入法，先安个搜狗再安KDE吧……</p>
+<p>发现<a target="_blank" rel="noopener" href="https://pinyin.sogou.com/linux/help.php">官网</a>有，我就不赘述了（好评！搜狗好感+1）</p>
+<p>不过官网说的是注销，据我测试要重启才有搜狗</p>
+<p>安装KDE</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41413372/article/details/109410552">参考</a>（不过我按照文章说的下载AMD的支持）</p>
+<p>肯定需要一个好看的终端咯~安装oh-my-zsh</p>
+<p>首先需要cat /etc/shells发现没有zsh，安装一下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo apt-get install zsh<br></code></pre></td></tr></table></figure>
+
+<p>本来想用官方的curl方式直接安装的，但是新系统没安梯子，没办法只能自己下载了</p>
+<p>顺便安上git，我直接无师自通输入下面的指令，安装成功（linux NB）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo apt-get install git<br></code></pre></td></tr></table></figure>
+
+<p>继续安装ohmyzsh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">git <span class="hljs-built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git<br></code></pre></td></tr></table></figure>
+
+<p><strong>绷不住了，git clone也连不上……被迫安了个梯子</strong></p>
+<p>安装clash：</p>
+<p>首先，去官网下载gz</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sh">gunzip clash-linux-amd64-v1.7.0.gz<br><br>mv clash-linux-amd64-v1.7.0.gz clash<br>mkdir Clash<br>mv clash ./Clash<br><br>chmod +x clash<br></code></pre></td></tr></table></figure>
+
+<p>然后挪到opt去，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/.config/clash/ <span class="hljs-comment">#配置文件在这里</span><br>curl [订阅连接] &gt;&gt; config.yaml <span class="hljs-comment">#替换掉原来的文件</span><br></code></pre></td></tr></table></figure>
+
+<p>不过我用的这个梯子好像并不能curl？总之是把梯子提供的<a target="_blank" rel="noopener" href="https://mxwljsq.com/user/tutorial?os=linux&client=clash">东西</a>放进yaml里</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/396272999">参考文章</a></p>
+<p>虽然上面那个并没有成功，不过好像是梯子的问题，步骤是对的</p>
+<p>但是我又成功git clone了！<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014375643/article/details/115826506">修改hosts</a></p>
+<p>继续弄oh-my-zsh，按照官网的方法curl：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.7k3bak4k5ss0.png" srcset="/img/loading.gif" alt="image"></p>
+<p>不过，启用zsh之后，要ll -a / ls -a才能显示隐藏文件了，别忘了</p>
+<p> 然后换一个喜欢的主题就好，（注意换主题如果安字体，别用gnome安装，KDE设置里同样能安装字体）</p>
+<p>安装：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/58073103">参考文章1</a> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63585679">参考文章2</a></p>
+<p>美化：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b8a80dd59414">参考</a></p>
+<p>输入这个可以重新配置power10k:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs b">p10k configure<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>关于KDE图标包，<a target="_blank" rel="noopener" href="https://store.kde.org/p/1166289">我用的这个</a>，解压之后在KDE的设置里直接就能导入</p>
+<p>neofetch可以搞出Ubuntu的图标，Ctrl + L可以清屏</p>
+<p>安装QQ，那个LinuxQQ实在是UI太丑了，还对缩放的支持很奇怪，所以安装wine吧，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hskcool/p/14227695.html">这里</a>；但是由于我的笔记本是2.5k屏所以默认窗口非常小，改一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">WINEPREFIX=~/.deepinwine/Deepin-QQ deepin-wine winecfg<br></code></pre></td></tr></table></figure>
+
+<p>（我这个最后测的是180左右合适）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.1wp8gi8m24u8.png" srcset="/img/loading.gif" alt="image"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40843987/article/details/105934480?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link">QQ不显示头像的解决办法</a></p>
+<p>为了避免之后wineQQ修复了这个问题后改不回来设置凑巧这个博客还没了，我还是记一下我怎么修改的吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/default/grub<br><br>GRUB_CMDLINE_LINUX_DEFAULT=<span class="hljs-string">&quot;splash quiet&quot;</span>                 <span class="hljs-comment"># 修改前</span><br>GRUB_CMDLINE_LINUX_DEFAULT=<span class="hljs-string">&quot;ipv6.disable=1 splash quiet&quot;</span>  <span class="hljs-comment"># 修改后</span><br><br>sudo update-grub  <span class="hljs-comment"># 使刚才的修改生效</span><br></code></pre></td></tr></table></figure>
+
+<p>大不了多重启几次，就能正常显示头像了，第一次显示可能会挺慢的，但既然是Linux，又不是不能用嘛</p>
+<p>安装VSC很简单，有deb，安装IDEA解压之后老规矩放在opt下喜欢的目录，然后运行解压出来的文件夹里的bin的idea.sh就行</p>
+<p>然后，之前那个clash，果然是梯子的问题，不管clash的事。刚才依然是在/opt/Clash（我安装在这里）下用梯子给的链接更新了一下config.yaml，然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./clash -d . <span class="hljs-comment">#最后那个.代表用当前目录下的配置文件</span><br></code></pre></td></tr></table></figure>
+
+<p>成功连上外网啦！开心~</p>
+<p><del>由于Linux在某些方面实在不是很人性化（虽然我想怪Clash为什么不做一个GUI啦），加上Linux不是主力系统，就不配置梯子的服务自启动自更新啥的了。</del></p>
+<p>然后配置一下开机自启clash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/systemd/system/clash.service<br><br>[Unit]<br>Description=clash daemon<br><br>[Service]<br>Type=simple<br>User=izayoiaster<br>ExecStart=/opt/Clash/clash -d .<br>Restart=on-failure<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl daemon-reload <span class="hljs-comment">#重新加载systemctl deamon</span><br>sudo systemctl start clash.sevice <span class="hljs-comment">#启动clash</span><br>sudo systemctl <span class="hljs-built_in">enable</span> clash.service <span class="hljs-comment">#开机启动</span><br></code></pre></td></tr></table></figure>
+
+<p>输入下面的指令可以查看运行状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl status clash.service<br></code></pre></td></tr></table></figure>
+
+<p>（貌似还是不太好用555）（好用啦！）</p>
+<p>可以访问下列任意一个网址来可视化配置：</p>
+<p><a target="_blank" rel="noopener" href="http://clash.razord.top/#/proxies">http://clash.razord.top/#/proxies</a></p>
+<p><a target="_blank" rel="noopener" href="http://yacd.haishan.me/#/proxies">http://yacd.haishan.me/#/proxies</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.4htn013c0eg0.png" srcset="/img/loading.gif" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.2b6p7mhc8tgk.png" srcset="/img/loading.gif" alt="image"></p>
+<p>可以设置一个切换窗口特效，我觉得自带的一个就不错，稍微设置一下就行（强烈吐槽微软取消了win7/vista那种切换窗口的特效！）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.1cxjc4n6qpgg.png" srcset="/img/loading.gif" alt="image"></p>
+<p>本来还想弄个xshell的，发现没有linux版，但是又一想，我都已经是有zsh的linux了，直接<strong>ssh root@ip地址</strong>不比xshell香多了；于是我直接把服务器里配好的环境变量给拷过来了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/java/jdk1.8.0_311<br>CLASSPATH=<span class="hljs-variable">$JAVA_HOME</span>/lib/<br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$JAVA_HOME</span>/bin<br><span class="hljs-built_in">export</span> PATH JAVA_HOME CLASSPATH<br><br><span class="hljs-built_in">export</span> MAVEN_HOME=/usr/<span class="hljs-built_in">local</span>/maven/apache-maven-3.6.3<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$MAVEN_HOME</span>/bin:<span class="hljs-variable">$PATH</span> <br><br>PATH=/data/mysql/bin:/data/mysql/lib:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> PATH<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.qcf64ds0yww.png" srcset="/img/loading.gif" alt="image"></p>
+<p>顺便，安装C/C++竟然这么简单：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install gcc<br>sudo apt-get install g++<br></code></pre></td></tr></table></figure>
+
+<p>（然后写了个HelloWorld后才发现如今的VSC的配置已经能自动给编译生成可执行文件了？！）</p>
+<p>收工！（暂时？）</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/28/%E8%A7%A3%E5%86%B3spring-boot-maven-plugin%E6%8A%A5%E9%94%99/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">解决spring-boot-maven-plugin报错</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/24/SpringBoot%E6%95%B4%E5%90%88Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">SpringBoot整合Redis的一些问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> ×  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
