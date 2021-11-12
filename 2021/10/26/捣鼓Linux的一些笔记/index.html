@@ -237,7 +237,7 @@
 <p>发现<a target="_blank" rel="noopener" href="https://pinyin.sogou.com/linux/help.php">官网</a>有，我就不赘述了（好评！搜狗好感+1）</p>
 <p>不过官网说的是注销，据我测试要重启才有搜狗</p>
 <p>安装KDE</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41413372/article/details/109410552">参考</a>（不过我按照文章说的下载AMD的支持）</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41413372/article/details/109410552">参考</a>（不过我没有按照文章说的下载AMD的支持）</p>
 <p>肯定需要一个好看的终端咯~安装oh-my-zsh</p>
 <p>首先需要cat /etc/shells发现没有zsh，安装一下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo apt-get install zsh<br></code></pre></td></tr></table></figure>
@@ -272,11 +272,8 @@
 
 
 
-
-
-
-
 <p>关于KDE图标包，<a target="_blank" rel="noopener" href="https://store.kde.org/p/1166289">我用的这个</a>，解压之后在KDE的设置里直接就能导入</p>
+<p>主题用了Adapta，左边栏是latte</p>
 <p>neofetch可以搞出Ubuntu的图标，Ctrl + L可以清屏</p>
 <p>安装QQ，那个LinuxQQ实在是UI太丑了，还对缩放的支持很奇怪，所以安装wine吧，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hskcool/p/14227695.html">这里</a>；但是由于我的笔记本是2.5k屏所以默认窗口非常小，改一下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">WINEPREFIX=~/.deepinwine/Deepin-QQ deepin-wine winecfg<br></code></pre></td></tr></table></figure>
@@ -304,12 +301,21 @@
 
 <p>（貌似还是不太好用555）（好用啦！）</p>
 <p>可以访问下列任意一个网址来可视化配置：</p>
-<p><a target="_blank" rel="noopener" href="http://clash.razord.top/#/proxies">http://clash.razord.top/#/proxies</a></p>
+<p><a target="_blank" rel="noopener" href="http://clash.razord.top/#/proxies">http://clash.razord.top/#/proxies</a> （←这个网址每次都要清缓存才能登上去我不知道为什么）</p>
 <p><a target="_blank" rel="noopener" href="http://yacd.haishan.me/#/proxies">http://yacd.haishan.me/#/proxies</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.4htn013c0eg0.png" srcset="/img/loading.gif" alt="image"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.2b6p7mhc8tgk.png" srcset="/img/loading.gif" alt="image"></p>
 <p>可以设置一个切换窗口特效，我觉得自带的一个就不错，稍微设置一下就行（强烈吐槽微软取消了win7/vista那种切换窗口的特效！）</p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.1cxjc4n6qpgg.png" srcset="/img/loading.gif" alt="image"></p>
+<p>然后自带的grub实在是太丑了，搞个美化</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vinceliuice/grub2-themes">https://github.com/vinceliuice/grub2-themes</a></p>
+<p>虽然网上有一些教程，不过我这个主题貌似能自动安装配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo ./install.sh -b -t tela -s 2k <br></code></pre></td></tr></table></figure>
+
+
+
+
+
 <p>本来还想弄个xshell的，发现没有linux版，但是又一想，我都已经是有zsh的linux了，直接<strong>ssh root@ip地址</strong>不比xshell香多了；于是我直接把服务器里配好的环境变量给拷过来了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/java/jdk1.8.0_311<br>CLASSPATH=<span class="hljs-variable">$JAVA_HOME</span>/lib/<br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$JAVA_HOME</span>/bin<br><span class="hljs-built_in">export</span> PATH JAVA_HOME CLASSPATH<br><br><span class="hljs-built_in">export</span> MAVEN_HOME=/usr/<span class="hljs-built_in">local</span>/maven/apache-maven-3.6.3<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$MAVEN_HOME</span>/bin:<span class="hljs-variable">$PATH</span> <br><br>PATH=/data/mysql/bin:/data/mysql/lib:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> PATH<br></code></pre></td></tr></table></figure>
 
