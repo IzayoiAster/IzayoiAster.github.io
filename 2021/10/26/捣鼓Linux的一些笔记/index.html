@@ -320,10 +320,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">JAVA_HOME=/usr/<span class="hljs-built_in">local</span>/java/jdk1.8.0_311<br>CLASSPATH=<span class="hljs-variable">$JAVA_HOME</span>/lib/<br>PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$JAVA_HOME</span>/bin<br><span class="hljs-built_in">export</span> PATH JAVA_HOME CLASSPATH<br><br><span class="hljs-built_in">export</span> MAVEN_HOME=/usr/<span class="hljs-built_in">local</span>/maven/apache-maven-3.6.3<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$MAVEN_HOME</span>/bin:<span class="hljs-variable">$PATH</span> <br><br>PATH=/data/mysql/bin:/data/mysql/lib:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> PATH<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.qcf64ds0yww.png" srcset="/img/loading.gif" alt="image"></p>
+<p>至于传输文件，使用scp指令即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">scp 本地用户名@IP地址: 文件1 远程用户名@IP地址: 文件2<br>[本地用户名@IP地址:]可以不输入,可能需要输入远程用户名所对应的密码.<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Linux/image.3dpnwxpgwae0.png" srcset="/img/loading.gif" alt="image"></p>
 <p>顺便，安装C/C++竟然这么简单：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install gcc<br>sudo apt-get install g++<br></code></pre></td></tr></table></figure>
 
 <p>（然后写了个HelloWorld后才发现如今的VSC的配置已经能自动给编译生成可执行文件了？！）</p>
+<p>然后，本来想研究研究怎么弄OneDrive的（虽然也能登录网页版），结果发现KDE的Dolphin（文件管理器）（Gnome不清楚，毕竟已经被我给卸载了hh）直接在设备那里列出了个Windows，点进去一看，好家伙，这不就是我Windows的C盘吗。于是快乐地在KDE桌面上加了指向Desktop和OneDrive目录的快捷方式，进行一个文件的共享，舒服。</p>
 <p>收工！（暂时？）</p>
 
             </div>

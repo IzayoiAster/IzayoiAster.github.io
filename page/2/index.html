@@ -184,6 +184,55 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/10/22/%E8%A7%A3%E5%86%B3MyBatis%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E9%9D%9Enull%E7%9A%84%E5%80%BC%E6%98%BE%E7%A4%BA%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">解决MyBatis在浏览器返回json非null的值显示为null的问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/22/%E8%A7%A3%E5%86%B3MyBatis%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E9%9D%9Enull%E7%9A%84%E5%80%BC%E6%98%BE%E7%A4%BA%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+          
+比如这种情况，一开始也不知道为啥，也没搜出来
+后来换了换关键词才发现不是mysql的问题，是mybatis的问题
+而导致这个mybatis问题的原因是那个MyBatisX的代码生成插件的问题
+对于sql中小写字母+下划线形式的表命名，在实体类中需要改为对应的驼峰命名形式才能被MyBatis正确映射
+那两个ActualColumn的选项，关上之后就是驼峰形式的了
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-22 16:05" pubdate>
+              2021-10-22
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MyBatis/">MyBatis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/10/14/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">SpringBoot学习笔记2</a>
       </h1>
 
@@ -594,57 +643,6 @@ IDEA配置
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Tomcat/">Tomcat</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/15/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">SSM学习笔记1</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/15/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-          
-          
-            
-          
-          Spring
-前置小抱怨：由于一直一来我觉得屏幕不小所以都没隐藏收藏栏导致前面很大一部分的网页截图有收藏栏很难看555，后来隐藏了才发现并没有麻烦多少而且好看多了Orz
-
-入门前置小知识：JavaSE经典三层架构是web层、业务/service层、DAO层
-
-web层：获取浏览器提交的数据，或者将数据返回给浏览器
-业务层：专门用来处理业务逻辑
-DAO层：专门用来和数据库进行交互
-
-
-tips: C
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-15 17:55" pubdate>
-              2021-07-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Spring/">Spring</a>
             
           </div>
         
