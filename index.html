@@ -184,6 +184,53 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/24/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/24/KMP%E7%AE%97%E6%B3%95/">
+          
+          
+            
+          
+          对于KMP算法的理解：
+123ABCABCABLTSABCABLTS     ↑
+
+显然，模式串第一次匹配到 L 的时候不匹配了，但是截止L之前的都是匹配的也就是说，如果模式串里有一段后缀和前缀相同，那么这一段后缀对应的主串里的那一部分字符串，也是和模式串的那一部分前缀相同的：
+123前缀XX后缀XXXXXXXXXX    ↗前缀XX后缀XXX
+
+我们就可以直接把模式串后移，让模式串的那一部分前缀
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-24 10:17" pubdate>
+              2021-11-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/16/Shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Shiro学习笔记</a>
       </h1>
 
@@ -285,7 +332,7 @@
             
           
           没错，我就是传说中的异端不换行党！
-Ctrl + P，找到settings.json
+Ctrl + P，找到settings.json（或者Ctrl + Shift  + P）
 加入这一句
 1&quot;C_Cpp.clang_format_style&quot;: &quot;&#123; BasedOnStyle: Google, IndentWidth: 4&#125;&quot;,
 
@@ -585,53 +632,6 @@ ps -ef|grep xxx.jar，或者像下面这样，列出
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Linux/">Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/22/Linux%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%EF%BC%88%E5%90%AB%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%89/">Linux安装配置MySQL（含远程连接）</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/22/Linux%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%EF%BC%88%E5%90%AB%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%89/">
-          
-          
-            
-          
-          这不最近在写外卖小程序的后台嘛，前端的兄弟问我要接口了，不过他那个机子还没怎么配那一堆环境，我把项目发给他让他连localhost似乎有点麻烦，干脆就先搞了个服务器研究研究部署项目，反正以后也要这么干。
-网上的教程实在是……令人无语，搜出来10篇8篇都是抄来抄去一模一样的文章，剩下的还有一堆过时的，稍微记一下安装吧。
-首先这是个全新的干干净净的服务器
-挖个坑，下次配置再写
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-22 16:23" pubdate>
-              2021-10-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-              <a href="/tags/MySQL/">MySQL</a>
             
           </div>
         
