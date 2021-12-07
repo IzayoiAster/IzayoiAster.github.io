@@ -20,7 +20,7 @@
   <meta name="author" content="十六夜紫菀 / IzayoiAster">
   <meta name="keywords" content="">
   
-  <title>KMP算法 - 紫菀的小窝</title>
+  <title>堆排序 - 紫菀的小窝</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -165,7 +165,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="KMP算法">
+            <span class="h2" id="subtitle" title="堆排序">
               
             </span>
 
@@ -175,8 +175,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-24 10:17" pubdate>
-        2021年11月24日 上午
+      <time datetime="2021-11-26 17:24" pubdate>
+        2021年11月26日 下午
       </time>
     </span>
   
@@ -212,26 +212,18 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">KMP算法</h1>
+            <h1 style="display: none">堆排序</h1>
             
             <div class="markdown-body">
-              <p>对于KMP算法的理解：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">ABCABCABLTS<br>ABCABLTS<br>     ↑<br></code></pre></td></tr></table></figure>
+              <p>稍微记一下吧（虽然可能之后看会有点抽象，但也懒得画图了（逃））；看图就看<a target="_blank" rel="noopener" href="https://testerhome.com/articles/27019">这个</a>文章吧</p>
+<p>首先小根堆大根堆的定义就不写了</p>
+<p>以小根堆为例吧，比如说，我们当前已经有一个树/堆了（用顺序表存储的，那种典中典的<code>t[p], t[p &lt;&lt; 1], t[p &lt;&lt; 1 | 1]</code>的方式），我们要把这个堆变成一个小根堆</p>
+<h3 id="建堆"><a href="#建堆" class="headerlink" title="建堆"></a>建堆</h3><p>首先，叶子节点不用动，从倒数第一层节点开始，比较节点和他们的左右儿子，如果比左右儿子小，就<strong>将其和左右儿子中最小的进行交换</strong>（因为是小根堆嘛）</p>
+<p>之后，再往上一层层地做类似于对倒数第一层的节点的比较和交换操作。<strong>注意，</strong>由于层数变多了，有可能把当前层节点交换下去后，会导致之前本来正确的下层堆变得又不正确了，这时候就递归地再交换下去就行了；</p>
+<h3 id="排序（输出）"><a href="#排序（输出）" class="headerlink" title="排序（输出）"></a>排序（输出）</h3><p>首先，<strong>不管三七二十一</strong>，把<strong>堆顶元素</strong>（即数组第一个元素）和未排序序列的<strong>最后一个元素</strong>（数组最后一个元素）进行交换，把最后一位（即原堆顶）<strong>无情踢出</strong>，之后重新对小根堆进行构建（从新换上来的临时堆顶（原最后一个元素）开始，一层层对比并且交换下去）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 10016</span><br><span class="hljs-keyword">int</span> n, t[MAXN];<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 参考</span><br><span class="hljs-comment"> * https://blog.csdn.net/qq_28063811/article/details/93034625</span><br><span class="hljs-comment"> * https://www.cnblogs.com/chengxiao/p/6129630.html</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * 这里使用的是我喜欢的一种数组存树的方式，貌似也很常用：</span><br><span class="hljs-comment"> * 1 -- 根节点</span><br><span class="hljs-comment"> * p * 2（即p &lt;&lt; 1） -- 编号为p的节点的左儿子</span><br><span class="hljs-comment"> * p * 2 + 1（即p &lt;&lt; 1 | 1） -- 编号为p的节点的右儿子</span><br><span class="hljs-comment"> */</span> <br><br><span class="hljs-comment">// 对root和他的儿子进行堆的维护；这里写的是小根堆</span><br><span class="hljs-comment">// 因为在输出的过程中，会有节点被“踢出去”，所以传入数组当前真实长度curN</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">adjust</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root, <span class="hljs-keyword">int</span> curN)</span> </span>&#123; <br>    <span class="hljs-keyword">int</span> left = root &lt;&lt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">int</span> right = root &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// printf(&quot;Comparing %d(%d) and its sons %d(%d) %d(%d\n&quot;, root, t[root], left, t[left], right, t[right]);</span><br>    <span class="hljs-keyword">if</span>(left &gt; curN) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// 是叶子节点，没有儿子</span><br>    <span class="hljs-keyword">if</span>(left == curN) &#123; <span class="hljs-comment">// 只有左儿子</span><br>        <span class="hljs-keyword">if</span>(t[root] &gt; t[left]) &#123; <span class="hljs-comment">// 左儿子比当前节点小，把左儿子换上来</span><br>            swap(t[root], t[left]);<br>            adjust(left, curN); <span class="hljs-comment">// 递归维护下一层节点，避免上层的交换影响了下层原本的结果</span><br>        &#125;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 既有左儿子又有右儿子</span><br>        <span class="hljs-keyword">if</span>(t[left] &lt; t[right] &amp;&amp; t[root] &gt; t[left]) &#123;<br>            swap(t[root], t[left]);<br>            adjust(left, curN);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(t[right] &lt; t[left] &amp;&amp; t[root] &gt; t[right]) &#123;<br>            swap(t[root], t[right]);<br>            adjust(right, curN);<br>        &#125;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 对于输入的原始堆进行初次建堆</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n / <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">1</span>; i--) <span class="hljs-comment">// 这是观察出的规律，从n/2号节点开始反着遍历，直接就跳过了叶子节点</span><br>        adjust(i, n);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>        <span class="hljs-built_in">cout</span> &lt;&lt; t[<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>        swap(t[<span class="hljs-number">1</span>], t[n - i]);<br>        adjust(<span class="hljs-number">1</span>, n - i - <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-built_in">cin</span> &gt;&gt; n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">cin</span> &gt;&gt; t[i];<br>    init();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">cout</span> &lt;&lt; t[i] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>; <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    sort();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>显然，模式串第一次匹配到 <strong>L</strong> 的时候不匹配了，但是<strong>截止L之前的都是匹配的</strong><br>也就是说，如果模式串里<strong>有一段后缀和前缀相同</strong>，那么这一段后缀<strong>对应的主串里</strong>的那一部分字符串，也是和<strong>模式串</strong>的那一部分<strong>前缀</strong>相同的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">前缀XX后缀XXXXXXXXXX<br>    ↗<br>前缀XX后缀XXX<br></code></pre></td></tr></table></figure>
 
-<p>我们就可以直接把模式串后移，让<strong>模式串的那一部分前缀</strong>与主串里<strong>之前和模式串的后缀匹配的</strong>那一部分字符串重合<br>这样一来前缀的那一部分肯定是匹配的，直接从模式串上次，不匹配的地方继续开始匹配即可</p>
-<p>next数组正是存储了：对于模式串，如果这一位发生了不匹配，往后再移动多少位可以尽可能的利用之前已经匹配的前缀进行 <del>半路起步的</del> 匹配<br>（因为当前不匹配了，所以存的是 当前位之前的最大相同前后缀长度 + 1（这个+1观察一下就能懂了）)</p>
-<ul>
-<li>第一个next规定为0</li>
-<li>显然，模式串中的最后一个字符不影响next数组的结果（因为决定当前位的next值的是它之前的子串）</li>
-</ul>
-<p>至于next的计算，实在是很难懂，我觉得还是结合下面这句话然后去看代码比较好：</p>
-<blockquote>
-<p>计算next[ ]的过程，其实就类似于模式串对自身进行了一次KMP算法</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 10016</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><span class="hljs-keyword">char</span> a[MAXN], b[MAXN];<br><span class="hljs-keyword">int</span> next[MAXN], lena, lenb;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>    next[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; lenb; i++) &#123;<br>        <span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; b[j + <span class="hljs-number">1</span>] != b[i + <span class="hljs-number">1</span>]) j = next[j]; <span class="hljs-comment">// 不匹配了，回退（记住就行！）</span><br>        <span class="hljs-keyword">if</span> (b[i + <span class="hljs-number">1</span>] == b[j + <span class="hljs-number">1</span>]) j++; <span class="hljs-comment">// 匹配了，往后接着匹配，并且让后面一位的next等于当前位的next+1</span><br>        next[i + <span class="hljs-number">1</span>] = j;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-built_in">cin</span> &gt;&gt; a + <span class="hljs-number">1</span> &gt;&gt; b + <span class="hljs-number">1</span>;<br>    lena = <span class="hljs-built_in">strlen</span>(a + <span class="hljs-number">1</span>);<br>    lenb = <span class="hljs-built_in">strlen</span>(b + <span class="hljs-number">1</span>);<br>    init();<br>    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; lena; i++) &#123; <span class="hljs-comment">// 主串指针：i，模式串指针：j</span><br>        <span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; b[j + <span class="hljs-number">1</span>] != a[i + <span class="hljs-number">1</span>]) j = next[j]; <span class="hljs-comment">// 当前匹配失败，根据next往后跳转继续匹配</span><br>        <span class="hljs-keyword">if</span> (b[j + <span class="hljs-number">1</span>] == a[i + <span class="hljs-number">1</span>]) j++; <span class="hljs-comment">// 当前匹配成功，模式串指针后移一位（主串指针在for里后移）</span><br>        <span class="hljs-keyword">if</span> (j == lenb) &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Matched at %d\n&quot;</span>, i + <span class="hljs-number">1</span> - lenb + <span class="hljs-number">1</span>);<br>            j = next[j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= lenb; i++) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, next[i]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -260,18 +252,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/24/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">最小生成树</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/16/Shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">Shiro学习笔记</span>
+                      <a href="/2021/11/24/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+                        <span class="hidden-mobile">最小生成树</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
