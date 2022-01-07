@@ -184,6 +184,57 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/10/24/SpringBoot%E6%95%B4%E5%90%88Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">SpringBoot整合Redis的一些问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/24/SpringBoot%E6%95%B4%E5%90%88Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+          把@Autowired改成@Resource
+12@Resourceprivate RedisTemplate&lt;String, String&gt; redisTemplate;
+
+果然auto的不一定稳？
+改了之后，确实能存进去了，但是有奇怪的前缀：
+
+这是产生原因：RedisTemplate写入Redis数据出现无意义乱码前缀\xac\xed\x00\x05
+解决方法——自己重写
+123
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-24 18:44" pubdate>
+              2021-10-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring/">Spring</a>
+            
+              <a href="/tags/Redis/">Redis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/10/23/%E4%BD%BF%E7%94%A8Swagger3%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">使用Swagger3生成接口文档</a>
       </h1>
 
@@ -589,51 +640,6 @@ SpringBoot并不是对Spring功能上的增强，而是提供了一种快速使�
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/03/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">SSM学习笔记2</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/03/SSM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">
-          
-          
-            
-          
-          SpringMVC开始之前先来点阶段性的东西
-
-项目包里，主要有controller（web）、dao、domain（或POJO，存实体用）、service、utils（工具类）
-再就是两个刻在DNA里的xml模板：spring-mvc.xml和web.xml
-1234567891011121314151617&gt;&lt;?xml version=&quot;1.0&quot; encodin
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-03 14:05" pubdate>
-              2021-10-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Spring/">Spring</a>
             
           </div>
         
