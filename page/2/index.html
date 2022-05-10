@@ -184,6 +184,140 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/10/28/VSCode%E8%AE%BE%E7%BD%AECpp%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%B8%8D%E6%8D%A2%E8%A1%8C/">VSCode设置C++格式化大括号不换行</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/28/VSCode%E8%AE%BE%E7%BD%AECpp%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%B8%8D%E6%8D%A2%E8%A1%8C/">
+          
+          
+            
+          
+          没错，我就是传说中的异端不换行党！
+Ctrl + P，找到settings.json（或者Ctrl + Shift  + P）
+加入这一句
+1&quot;C_Cpp.clang_format_style&quot;: &quot;&#123; BasedOnStyle: Google, IndentWidth: 4&#125;&quot;,
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-28 09:23" pubdate>
+              2021-10-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/28/%E8%A7%A3%E5%86%B3IDEA%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%80%BB%E6%98%AF%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B8%A6Maven%E7%9A%84%E9%97%AE%E9%A2%98/">解决IDEA新建项目时总是使用自带Maven的问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/28/%E8%A7%A3%E5%86%B3IDEA%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%80%BB%E6%98%AF%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B8%A6Maven%E7%9A%84%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+          网上的方法（修改project.defalt.xml / Default Settings）都是过时的方法，我的版本（2021.2.3）已经不能用了，最后自己给摸索出来了：
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-28 08:49" pubdate>
+              2021-10-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/28/%E8%A7%A3%E5%86%B3spring-boot-maven-plugin%E6%8A%A5%E9%94%99/">解决spring-boot-maven-plugin报错</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/28/%E8%A7%A3%E5%86%B3spring-boot-maven-plugin%E6%8A%A5%E9%94%99/">
+          
+          
+            
+          
+          今天遇到这个问题，很烦：
+解决办法：加上和springboot一致的version即可
+可能是因为maven找错版本了？
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-28 08:25" pubdate>
+              2021-10-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/10/26/%E6%8D%A3%E9%BC%93Linux%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/">捣鼓Linux的一些笔记</a>
       </h1>
 
@@ -435,7 +569,7 @@ ps -ef|grep xxx.jar，或者像下面这样，列出
 那两个ActualColumn的选项，关上之后就是驼峰形式的了
 
 
-
+另外，如果navicat建表的
         </a>
       </p>
 
@@ -503,145 +637,6 @@ SpringBoot整合MyBatis经典Initializr（当然这里只导了mybatis用到的�
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Spring/">Spring</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/14/%E5%85%B3%E4%BA%8EIDEA%E7%9A%84Unable%20to%20resolve%20table/">关于IDEA的Unable to resolve table</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/14/%E5%85%B3%E4%BA%8EIDEA%E7%9A%84Unable%20to%20resolve%20table/">
-          
-          
-            
-          
-          .一时没有一个看起来靠谱的方案
-但是有个凑合的：写table的全限定名
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-14 20:09" pubdate>
-              2021-10-14
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IDEA/">IDEA</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/05/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">SpringBoot学习笔记1</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/05/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-          
-          
-            
-          
-          前言总算是学完了SSM（假装学完了（逃））
-什么是SpringBoot呢？
-SpringBoot并不是对Spring功能上的增强，而是提供了一种快速使用Spring的方式
-好的，前言结束，开始学习
-冲冲冲！！！！！！
-另外，由于感觉日后还是英语用的多，所以切回英语版IDEA啦
-基础入门HelloWorld123456789101112&lt;parent&gt;    &lt;artifactId
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-05 10:31" pubdate>
-              2021-10-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Spring/">Spring</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/03/%E8%A7%A3%E5%86%B3IDEA%E7%BC%BA%E5%B0%91jsp%E3%80%81Spring%E7%AD%89%E7%9B%B8%E5%85%B3%E6%8F%90%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">解决IDEA缺少jsp、Spring等相关提示的问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/03/%E8%A7%A3%E5%86%B3IDEA%E7%BC%BA%E5%B0%91jsp%E3%80%81Spring%E7%AD%89%E7%9B%B8%E5%85%B3%E6%8F%90%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">
-          
-          
-            
-          
-          .比如要新建一个jsp，却发现右键webapp目录后没有jsp模板，或者干脆没有webapp目录
-再比如新建Spring的xml却找不到模板
-文件-项目结构-添加， 缺啥加啥
-
-比如没有webapp目录或者不叫webapp，就自己改一下，有时候还需要配置一下下面的另一个目录（图里挡住了）
-之后就能在这里新建jsp了
-
-参考：(10条消息) 项目正常却报No Spring WebApplicatio
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-03 15:28" pubdate>
-              2021-10-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
             
           </div>
         
