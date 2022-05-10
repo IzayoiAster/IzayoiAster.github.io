@@ -335,6 +335,51 @@
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.19v26nkcyqcg.webp" srcset="/img/loading.gif" alt="image"></p>
 <p>重新走一遍流程</p>
 <p>大功告成</p>
+<h2 id="WSL2-amp-美化"><a href="#WSL2-amp-美化" class="headerlink" title="WSL2 &amp; 美化"></a>WSL2 &amp; 美化</h2><p>首先CPU的虚拟化记得打开，然后在Windows功能里启用Hyper-V（我不确定用不用这个，反正WSL不用别的也得用）、虚拟机和WSL</p>
+<p>管理员身份打开终端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">wsl --set-default-version 2<br>wsl --update<br>wsl --list --online<br>wsl --install -d Ubuntu-20.04<br></code></pre></td></tr></table></figure>
+
+<p>nmd，翻车了（忘了update直接install了，报错后重新update重启后又install报新的错：）</p>
+<img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.5guyo0cdt100.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.1339hwln97mo.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
+
+
+
+<p>用<code>wsl --unregister Ubuntu-20.04</code>也没用，想起来这玩意儿和Windows高度集成，直接去开始菜单里找，果然已经安装了Ubuntu，卸载重启之后再安装就好了</p>
+<img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.16xi9fk5iaww.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
+
+
+
+<p>重启一下终端，终端里就会出现Ubuntu的选项卡啦！</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/guo_ridgepole/article/details/121031044">参考</a></p>
+<h3 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h3><p>之前那个Linux的写过一次，这次更细一点吧</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">官方GitHub</a></p>
+<p>先安装zsh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install zsh<br></code></pre></td></tr></table></figure>
+
+<p>安装ohmyzsh（好像也有Gitee的镜像）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.2mbxvxph9280.webp" srcset="/img/loading.gif" alt="image"></p>
+<p>安装<a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">p10k主题</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 挂了梯子<span class="hljs-built_in">clone</span>半天也没<span class="hljs-built_in">clone</span>下来改用官方的gitee源了</span><br>git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k<br></code></pre></td></tr></table></figure>
+
+<p>修改<code>~/.zshrc</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">ZSH_THEME</span>=<span class="hljs-string">&quot;powerlevel10k/powerlevel10k&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.4dk19nov5hq0.webp" srcset="/img/loading.gif" alt="image"></p>
+<p>更新一下会自动开始配置p10k主题</p>
+<p>wsl的阉割版系统好像不支持emoji，所以没法像完整linux里那么好看，不过也已经很好看了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">source .zshrc<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.4gf4knafst40.webp" srcset="/img/loading.gif" alt="image"></p>
+<p>记得最后update一下才能安装</p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.658o5r0oqpc0.webp" srcset="/img/loading.gif" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.2hx7tnxvz4u0.webp" srcset="/img/loading.gif" alt="image"></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b8a80dd59414">参考</a></p>
 
             </div>
             <hr>
