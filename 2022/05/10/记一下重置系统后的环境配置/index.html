@@ -249,7 +249,7 @@
 
 <p>不知道为什么要在资源管理器里给管理员权限才行……总之解压进去了</p>
 <p>配个变量</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Path</span><br><span class="hljs-attribute">D</span>:\Program Files\mingw-w<span class="hljs-number">64</span>\x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-<span class="hljs-number">8</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-release-win<span class="hljs-number">32</span>-seh-rt_v<span class="hljs-number">6</span>-rev<span class="hljs-number">0</span>\mingw<span class="hljs-number">64</span>\bin<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Path</span><br><span class="hljs-attribute">D</span>:\Development\mingw-w<span class="hljs-number">64</span>\x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-<span class="hljs-number">8</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-release-win<span class="hljs-number">32</span>-seh-rt_v<span class="hljs-number">6</span>-rev<span class="hljs-number">0</span>\mingw<span class="hljs-number">64</span>\bin<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -v<br>g++ -v<br></code></pre></td></tr></table></figure>
 
@@ -314,10 +314,8 @@
 <img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.77uoqxpip6g0.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
 
 <p>接下来一路默认就行</p>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>官网下载一路默认就行</p>
-<p>中途有关联到Windows终端和VSC，我一般都选上</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p>搞完前面这些可以搞搞hexo了</p>
-<p>首先自然是拿出祖传的blog文件夹（要是哪天我把blog文件夹也搞坏了再写怎么从头搭建吧）</p>
+<h2 id="Git-amp-SSH-amp-Hexo"><a href="#Git-amp-SSH-amp-Hexo" class="headerlink" title="Git &amp; SSH &amp; Hexo"></a>Git &amp; SSH &amp; Hexo</h2><p>Git官网下载一路默认就行，中途有关联到Windows终端和VSC，我一般都选上</p>
+<p>拿出祖传的blog文件夹（要是哪天我把blog文件夹也搞坏了再写怎么从头搭建吧）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install -g hexo<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.r3slqhze21c.webp" srcset="/img/loading.gif" alt="image"></p>
@@ -333,6 +331,7 @@
 <p>草，果然有问题，就应该配用户名和邮箱</p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.3rfd2eta5rs0.webp" srcset="/img/loading.gif" alt="image"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.19v26nkcyqcg.webp" srcset="/img/loading.gif" alt="image"></p>
+<p>(-C后面是”邮箱”)</p>
 <p>重新走一遍流程</p>
 <p>大功告成</p>
 <h2 id="WSL2-amp-美化"><a href="#WSL2-amp-美化" class="headerlink" title="WSL2 &amp; 美化"></a>WSL2 &amp; 美化</h2><p>首先CPU的虚拟化记得打开，然后在Windows功能里启用Hyper-V（我不确定用不用这个，反正WSL不用别的也得用）、虚拟机和WSL</p>
@@ -358,14 +357,18 @@
 <p>先安装zsh</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install zsh<br></code></pre></td></tr></table></figure>
 
-<p>安装ohmyzsh（好像也有Gitee的镜像）</p>
+<p>安装ohmyzsh</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;<br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sh -c &quot;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&quot;<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.2mbxvxph9280.webp" srcset="/img/loading.gif" alt="image"></p>
 <p>安装<a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">p10k主题</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 挂了梯子<span class="hljs-built_in">clone</span>半天也没<span class="hljs-built_in">clone</span>下来改用官方的gitee源了</span><br>git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k<br></code></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k<br></code></pre></td></tr></table></figure>
 
 <p>修改<code>~/.zshrc</code></p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">ZSH_THEME</span>=<span class="hljs-string">&quot;powerlevel10k/powerlevel10k&quot;</span><br></code></pre></td></tr></table></figure>
@@ -379,7 +382,16 @@
 <p>记得最后update一下才能安装</p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.658o5r0oqpc0.webp" srcset="/img/loading.gif" alt="image"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.2hx7tnxvz4u0.webp" srcset="/img/loading.gif" alt="image"></p>
+<p>（p10k条条亮度第二格）</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b8a80dd59414">参考</a></p>
+<h2 id="p-s"><a href="#p-s" class="headerlink" title="p.s."></a>p.s.</h2><p>才写完这个博客没多久，之前害我重置的bug又犯了</p>
+<p>滚nmd，用回win10去了</p>
+<p>等win11 22H2发布半年后再考虑升回win11吧😅</p>
+<p>（GPT是UEFI引导，如果不确定有UEFI就改成MBR）</p>
+<img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.48dn55r3ip80.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
+
+<h2 id="p-s-2"><a href="#p-s-2" class="headerlink" title="p.s.2"></a>p.s.2</h2><p>装win10后还有bug，无数次重装win11和win10后终于排查出害我重置的bug是飞利浦的Smart Controll导致的……</p>
+<p>误会win11了</p>
 
             </div>
             <hr>
