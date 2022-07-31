@@ -20,7 +20,7 @@
   <meta name="author" content="十六夜紫菀 / IzayoiAster">
   <meta name="keywords" content="">
   
-  <title>Linux安装配置MySQL（含远程连接） - 紫菀的小窝</title>
+  <title>写个Office转PDF的py程序 - 紫菀的小窝</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -165,7 +165,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Linux安装配置MySQL（含远程连接）">
+            <span class="h2" id="subtitle" title="写个Office转PDF的py程序">
               
             </span>
 
@@ -175,8 +175,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-22 16:23" pubdate>
-        2021年10月22日 下午
+      <time datetime="2022-06-14 16:36" pubdate>
+        2022年6月14日 下午
       </time>
     </span>
   
@@ -212,48 +212,14 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux安装配置MySQL（含远程连接）</h1>
+            <h1 style="display: none">写个Office转PDF的py程序</h1>
             
             <div class="markdown-body">
-              <p>这不最近在写外卖小程序的后台嘛，前端的兄弟问我要接口了，不过他那个机子还没怎么配那一堆环境，我把项目发给他让他连localhost似乎有点麻烦，干脆就先搞了个服务器研究研究部署项目，反正以后也要这么干。</p>
-<p>网上的教程实在是……令人无语，搜出来10篇8篇都是抄来抄去一模一样的文章，剩下的还有一堆过时的，稍微记一下安装吧。</p>
-<p>首先这是个全新的干干净净的服务器</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011421988/article/details/107234718">挖个坑，下次配置再写</a></p>
-<p>↑ my.cnf记得手动创建，内容要正确</p>
-<p>之后换成了Ubuntu20，报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig: <span class="hljs-built_in">command</span> not found<br></code></pre></td></tr></table></figure>
+              <p>做笔记想批量转一些pdf，找了个软件竟然还限制转换三个之后收费？就这么简单个破功能真就骗骗不懂的人呗，干脆自己写一个得了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># pip install pywin32</span><br><span class="hljs-keyword">from</span> win32com.client <span class="hljs-keyword">import</span> Dispatch<br><span class="hljs-keyword">import</span> os<br><br>pdfRoot = <span class="hljs-string">&quot;C:\\Users\Aster\Desktop\Office2PDF\pdf&quot;</span>  <br>wordRoot = <span class="hljs-string">&quot;C:\\Users\Aster\Desktop\Office2PDF\word&quot;</span>  <br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">doc2pdf</span>(<span class="hljs-params">filePath, file</span>):</span><br>    print(<span class="hljs-string">&quot;Converting: &quot;</span>, file)<br>    word = Dispatch(<span class="hljs-string">&#x27;Word.Application&#x27;</span>)<br>    doc = word.Documents.Open(filePath)<br>    outFile = pdfRoot + <span class="hljs-string">&quot;\\&quot;</span> + file.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;.pdf&quot;</span>  <span class="hljs-comment"># 生成pdf文件路径名称</span><br>    doc.SaveAs(outFile, FileFormat=<span class="hljs-number">17</span>)<br>    doc.Close()<br>    word.Quit()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    filelist = os.listdir(wordRoot)<br>    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> filelist:<br>        <span class="hljs-keyword">if</span> (file.endswith(<span class="hljs-string">&quot;.doc&quot;</span>) <span class="hljs-keyword">or</span> file.endswith(<span class="hljs-string">&quot;.docx&quot;</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-string">&quot;~$&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> file):<br>            filePath = wordRoot+<span class="hljs-string">&quot;\\&quot;</span>+file<br>            doc2pdf(filePath, file)<br>    print(<span class="hljs-string">&quot;All finished!&quot;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>ubuntu中chkconfig已经被sysv-rc-conf替代，具体操作如下：</p>
-<p>chkconfig命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig --add keepalived  <br>chkconfig keepalived on<br></code></pre></td></tr></table></figure>
-
-
-<p>sysv-rc-conf命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get install sysv-rc-conf<br>sysv-rc-conf keepalived on<br></code></pre></td></tr></table></figure>
-
-<p>但是install的时候报错了，参考这个：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/willingtolove/article/details/107494719">Ubuntu下安装sysv-rc-conf报错：“E: Unable to locate package sysv-rc-conf“_willingtolove的博客-CSDN博客</a></p>
-<p>即</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig --add mysql<br></code></pre></td></tr></table></figure>
-
-<p>换成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sysv-rc-conf mysql on<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<p>安装完成初次登录的时候报错了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql: error <span class="hljs-keyword">while</span> loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory<br></code></pre></td></tr></table></figure>
-
-<p>那么就手动安装对应的包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install libncurses5<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zipxzf/articles/12813868.html">Navicat连接远程（阿里云服务器）mysql数据库 - xufat - 博客园</a></p>
+<p>顺便，注意上面路径里的<code>\\</code>，本来写的<code>\</code>但是报错了，原来是python分不清楚到底是字符串还是<code>\U</code>转义</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ayouleyang/article/details/108283956">https://blog.csdn.net/ayouleyang/article/details/108283956</a></p>
 
             </div>
             <hr>
@@ -264,7 +230,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                      <a class="hover-with-bg" href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
                     
                   </div>
                 
@@ -281,18 +247,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/22/Linux%E9%83%A8%E7%BD%B2jar%E5%8C%85/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux部署jar包</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/22/%E8%A7%A3%E5%86%B3MyBatis%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E9%9D%9Enull%E7%9A%84%E5%80%BC%E6%98%BE%E7%A4%BA%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">
-                        <span class="hidden-mobile">解决MyBatis在浏览器返回json非null的值显示为null的问题</span>
+                      <a href="/2022/06/04/openEuler%E9%85%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">openEuler配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

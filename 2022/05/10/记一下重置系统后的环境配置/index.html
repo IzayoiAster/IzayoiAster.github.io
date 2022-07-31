@@ -233,8 +233,6 @@
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">java -version<br></code></pre></td></tr></table></figure>
 
-
-
 <h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><p>虽然原来的mingw也在，但是好像我之前装的是安装版的，还是重装一遍吧</p>
 <p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">下载地址</a></p>
 <img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.2f022vnua8pw.webp" srcset="/img/loading.gif" alt="image" style="zoom: 50%;" />
@@ -252,8 +250,6 @@
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Path</span><br><span class="hljs-attribute">D</span>:\Development\mingw-w<span class="hljs-number">64</span>\x<span class="hljs-number">86</span>_<span class="hljs-number">64</span>-<span class="hljs-number">8</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-release-win<span class="hljs-number">32</span>-seh-rt_v<span class="hljs-number">6</span>-rev<span class="hljs-number">0</span>\mingw<span class="hljs-number">64</span>\bin<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -v<br>g++ -v<br></code></pre></td></tr></table></figure>
-
-
 
 <h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>python就很简单咯，全自动</p>
 <p>找<a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-379/">release页面</a>找了半天（）</p>
@@ -276,8 +272,6 @@
 
 <p>把仓库加到变量里</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">Path<br>D:\Development\<span class="hljs-keyword">node</span><span class="hljs-title">\node_global</span><br></code></pre></td></tr></table></figure>
-
-
 
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>由于是免安装的所以也不用重下载（<a target="_blank" rel="noopener" href="https://github.com/tporadowski/redis/releases">下载地址</a>）</p>
 <p>在redis文件夹打开终端（如果是cmd的话不用加 .\ 标识）</p>
@@ -305,8 +299,6 @@
 <h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h2><p>重置之后之前的也还在，没啥好配的</p>
 <p>硬要写点啥那就是settings.xml改阿里云</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>aliyunmaven<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>*<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>AliYunMaven<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
 
 <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p>拿出我祖传的msi安装文件</p>
 <p>我一般习惯再安个Notifier</p>
@@ -343,12 +335,8 @@
 
 <img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.1339hwln97mo.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
 
-
-
 <p>用<code>wsl --unregister Ubuntu-20.04</code>也没用，想起来这玩意儿和Windows高度集成，直接去开始菜单里找，果然已经安装了Ubuntu，卸载重启之后再安装就好了</p>
 <img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.16xi9fk5iaww.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
-
-
 
 <p>重启一下终端，终端里就会出现Ubuntu的选项卡啦！</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/guo_ridgepole/article/details/121031044">参考</a></p>
@@ -418,6 +406,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/06/04/openEuler%E9%85%8D%E7%BD%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">openEuler配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
