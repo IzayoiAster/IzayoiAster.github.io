@@ -251,7 +251,7 @@
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -v<br>g++ -v<br></code></pre></td></tr></table></figure>
 
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>python就很简单咯，全自动</p>
+<h2 id="Python（已弃用）"><a href="#Python（已弃用）" class="headerlink" title="Python（已弃用）"></a>Python（已弃用）</h2><p>python就很简单咯，全自动</p>
 <p>找<a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-379/">release页面</a>找了半天（）</p>
 <p>记得选上添加到路径</p>
 <img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.15hf433k1gsg.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
@@ -262,6 +262,33 @@
 <img src="https://cdn.jsdelivr.net/gh/IzayoiAster/-@master/Reset/image.4kx3m0ybetu0.webp" srcset="/img/loading.gif" alt="image" style="zoom:67%;" />
 
 <p>最后有个取消Path长度限制，我看StackOverflow说最好运行一下（虽然我每次也都运行了，这次特地去查了查到底有没有用）</p>
+<h2 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h2><p>开始搞机器学习后普通Python有点麻烦了，直接换成Anaconda吧</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装的时候有个添加到路径，我安装的时候是灰的，不知道是不是因为之前安装过Python</p>
+<p>总之，如果自己添加路径：</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">Path<br>D:<span class="hljs-symbol">\D</span>evelopment<span class="hljs-symbol">\A</span>naconda3<br>D:<span class="hljs-symbol">\D</span>evelopment<span class="hljs-symbol">\A</span>naconda3<span class="hljs-symbol">\S</span>cripts<br>D:<span class="hljs-symbol">\D</span>evelopment<span class="hljs-symbol">\A</span>naconda3<span class="hljs-symbol">\L</span>ibrary<span class="hljs-symbol">\b</span>in<br>D:<span class="hljs-symbol">\D</span>evelopment<span class="hljs-symbol">\A</span>naconda3<span class="hljs-symbol">\L</span>ibrary<span class="hljs-symbol">\m</span>ingw-w64<span class="hljs-symbol">\b</span>in<br></code></pre></td></tr></table></figure>
+
+<p>使用下面的命令看配置对不对：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">python<br>conda info<br></code></pre></td></tr></table></figure>
+
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><p>我发现<a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/anaconda?spm=a2c6h.13651102.0.0.99681b11mGCy7j">阿里</a>的源比清华源多多了，还稳定，之前捣鼓清华源半天，发现是停止维护了</p>
+<p>依然是上面的<code>conda info</code>就可以看出来有没有换源</p>
+<p>换完之后<code>conda install</code>正常了，但是有的包就很烦，只能从pip安装， 我搜了半天也没搜到虚拟环境的pip配置文件放在哪，在用户文件夹下建了pip\pip.ini也不管用</p>
+<p>草，原来是在AppData里面吗？：</p>
+<p><img src="https://git.poker/IzayoiAster/-/blob/master/ShiXiRiJi/image.29bxwsi1fb8k.webp?raw=true" srcset="/img/loading.gif" alt="image"></p>
+<p>于是去把阿里云提供的ini复制进去了，结果又报错，定睛一看是代理的问题，关了梯子果然好使了</p>
+<p><img src="https://git.poker/IzayoiAster/-/blob/master/ShiXiRiJi/image.1skcvh9kncsg.webp?raw=true" srcset="/img/loading.gif" alt="image"></p>
+<h3 id="整合PowerShell"><a href="#整合PowerShell" class="headerlink" title="整合PowerShell"></a>整合PowerShell</h3><p>直接在pycharm打开终端powershell里面激活环境，会报错例如<code>Failed to activate conda environment. Please open Anaconda prompt, and run&#39;当初让我run啥我忘了也没搜到，反正我照着做了&#39;</code>，</p>
+<p>插入：又在另一个电脑上重新激活了一下，提示是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>这之后再打开终端，还会报好久没见过的经典红字错误<code>因为在此系统上禁止运行脚本报错</code>，那就这样：</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">管理员身份运行 <span class="hljs-string">PowerShell</span><br><span class="hljs-string"></span>执行：<span class="hljs-built_in">get-ExecutionPolicy，若显示</span> <span class="hljs-string">Restricted</span> 表示状态是禁止的<br>执行：<span class="hljs-built_in">set-ExecutionPolicy，会提示输入参数</span><br><span class="hljs-built_in">输入</span> <span class="hljs-string">RemoteSigned</span> 会提示进行选择 （我倒是到这一步就结束了）<br>输入：<span class="hljs-string">Y</span>，回车<br></code></pre></td></tr></table></figure>
+
+<p>然后再打开终端，就会和Linux一样前面有当前虚拟环境的显示了。</p>
 <h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">下载地址</a></p>
 <p>作为懒人我肯定是选msi格式，和python一样自动配变量</p>
 <p>途中有个安装chocolatey的选项，我之前倒是都选，不过好像用不上，这次没选</p>

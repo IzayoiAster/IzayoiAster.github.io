@@ -184,6 +184,55 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/10/22/%E8%A7%A3%E5%86%B3MyBatis%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E9%9D%9Enull%E7%9A%84%E5%80%BC%E6%98%BE%E7%A4%BA%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">解决MyBatis在浏览器返回json非null的值显示为null的问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/10/22/%E8%A7%A3%E5%86%B3MyBatis%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E9%9D%9Enull%E7%9A%84%E5%80%BC%E6%98%BE%E7%A4%BA%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+          
+比如这种情况，一开始也不知道为啥，也没搜出来
+后来换了换关键词才发现不是mysql的问题，是mybatis的问题
+而导致这个mybatis问题的原因是那个MyBatisX的代码生成插件的问题
+对于sql中小写字母+下划线形式的表命名，在实体类中需要改为对应的驼峰命名形式才能被MyBatis正确映射
+那两个ActualColumn的选项，关上之后就是驼峰形式的了
+
+
+另外，如果navicat建表的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-22 16:05" pubdate>
+              2021-10-22
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/10/14/SpringBoot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">SpringBoot学习笔记2</a>
       </h1>
 
@@ -598,50 +647,6 @@ tips: C
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Spring/">Spring</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/04/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">Java学习笔记1</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/04/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-          
-          
-            
-          
-          序学习python也就是为了当个工具，先学个大概不深入，暂且放一放，开始学主语言Java
-因为Java语法方面和C++实在是很像，所以略过一大堆东西，直接从一半开始吧顺便，还没看那个核心技术卷；来个前置知识吧：
-
-Java的包（package）和类，可以理解成文件夹和文件，并且实际上在系统里就是以文件夹和文件的方式来存放的跨包调用时，需要import，和python一样的操作IDEA中，例如src
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-04 12:58" pubdate>
-              2021-06-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
             
           </div>
         
