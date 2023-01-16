@@ -184,6 +184,193 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/01/07/%E7%B4%AB%E8%8F%80%E7%9A%84%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">紫菀的刷题笔记</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/07/%E7%B4%AB%E8%8F%80%E7%9A%84%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">
+          
+          
+            
+          
+          放假闲着也是闲着（虽然也没有在闲着……），也没啥想玩的游戏，干脆开始刷刷题玩儿吧
+顺便，官方的插件还挺好使的
+
+记得点那个地球切换到中国站
+自己写测试用例的格式（以下图题为例）[3,3]\n6
+
+（草，写错了，map那里应该是nums[i]）
+VSC设置sout, psvm
+
+Microsoft两数之和
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 t
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-07 19:35" pubdate>
+              2022-01-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/26/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/26/%E5%A0%86%E6%8E%92%E5%BA%8F/">
+          
+          
+            
+          
+          稍微记一下吧（虽然可能之后看会有点抽象，但也懒得画图了（逃））；看图就看这个文章吧
+首先小根堆大根堆的定义就不写了
+以小根堆为例吧，比如说，我们当前已经有一个树/堆了（用顺序表存储的，那种典中典的t[p], t[p &lt;&lt; 1], t[p &lt;&lt; 1 | 1]的方式），我们要把这个堆变成一个小根堆
+建堆首先，叶子节点不用动，从倒数第一层节点开始，比较节点和他们的左右儿子，如果比
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-26 17:24" pubdate>
+              2021-11-26
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/24/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">最小生成树</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/24/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">
+          
+          
+            
+          
+          因为平常不怎么用到Prim嘛，但是现在数据结构课学到了Prim，就写一下理解，顺便也复习一下Kruskal吧。
+Prim算法的思想就是，有两个点集U和V，我们一开始随便选取一个点放到U里，其他点都放在V里，然后每次在点集V找到一个距离点集U内的点最近的点加入点集U，直到V中的点全部加到U中为止
+1
+
+Kruskal算法的核心思想是，有两个边集T和G，每次从G中选取最短边e（所以会先对边进行排序），
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-24 21:50" pubdate>
+              2021-11-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/24/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/24/KMP%E7%AE%97%E6%B3%95/">
+          
+          
+            
+          
+          对于KMP算法的理解：
+123ABCABCABLTSABCABLTS     ↑
+
+显然，模式串第一次匹配到 L 的时候不匹配了，但是截止L之前的都是匹配的也就是说，如果模式串里有一段后缀和前缀相同，那么这一段后缀对应的主串里的那一部分字符串，也是和模式串的那一部分前缀相同的：
+123前缀XX后缀XXXXXXXXXX    ↗前缀XX后缀XXX
+
+我们就可以直接把模式串后移，让模式串的那一部分前缀
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-24 10:17" pubdate>
+              2021-11-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/16/Shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Shiro学习笔记</a>
       </h1>
 
@@ -451,194 +638,11 @@ Ctrl + P，找到settings.json（或者Ctrl + Shift  + P）
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/24/SpringBoot%E6%95%B4%E5%90%88Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">SpringBoot整合Redis的一些问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/24/SpringBoot%E6%95%B4%E5%90%88Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
-          
-          
-            
-          
-          把@Autowired改成@Resource
-12@Resourceprivate RedisTemplate&lt;String, String&gt; redisTemplate;
-
-果然auto的不一定稳？
-改了之后，确实能存进去了，但是有奇怪的前缀：
-
-这是产生原因：RedisTemplate写入Redis数据出现无意义乱码前缀\xac\xed\x00\x05
-解决方法——自己重写
-123
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-24 18:44" pubdate>
-              2021-10-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Spring/">Spring</a>
-            
-              <a href="/tags/Redis/">Redis</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/23/%E4%BD%BF%E7%94%A8Swagger3%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">使用Swagger3生成接口文档</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/23/%E4%BD%BF%E7%94%A8Swagger3%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">
-          
-          
-            
-          
-          1.导坐标
-12345&lt;dependency&gt;    &lt;groupId&gt;io.springfox&lt;/groupId&gt;    &lt;artifactId&gt;springfox-boot-starter&lt;/artifactId&gt;    &lt;version&gt;3.0.0&lt;/version&gt;&lt;/dependency&gt;
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-23 15:03" pubdate>
-              2021-10-23
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Swagger/">Swagger</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/22/Linux%E9%83%A8%E7%BD%B2jar%E5%8C%85/">Linux部署jar包</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/22/Linux%E9%83%A8%E7%BD%B2jar%E5%8C%85/">
-          
-          
-            
-          
-          Java MySQL这些环境的配置就不说了SpringBoot导够那些依赖之后，IDEA右边那个maven选项卡在Lifecircle里运行package，会生成一个jar包，传到linux里喜欢的地方
-（顺便要是部署的时候想关闭程序，输ps aux就能列出进程和进程号；不过如果是简单的控制台java -jar的话Ctrl + C就行）
-ps -ef|grep xxx.jar，或者像下面这样，列出
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-22 17:01" pubdate>
-              2021-10-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/22/Linux%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%EF%BC%88%E5%90%AB%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%89/">Linux安装配置MySQL（含远程连接）</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/22/Linux%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%EF%BC%88%E5%90%AB%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%89/">
-          
-          
-            
-          
-          这不最近在写外卖小程序的后台嘛，前端的兄弟问我要接口了，不过他那个机子还没怎么配那一堆环境，我把项目发给他让他连localhost似乎有点麻烦，干脆就先搞了个服务器研究研究部署项目，反正以后也要这么干。
-网上的教程实在是……令人无语，搜出来10篇8篇都是抄来抄去一模一样的文章，剩下的还有一堆过时的，稍微记一下安装吧。
-首先这是个全新的干干净净的服务器
-挖个坑，下次配置再写
-↑ my.cnf记得手动
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-22 16:23" pubdate>
-              2021-10-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">Linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
