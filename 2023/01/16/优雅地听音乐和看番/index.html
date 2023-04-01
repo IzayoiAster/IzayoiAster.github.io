@@ -224,7 +224,7 @@
 <li><p>老版本的mpv-lazy的字幕设置被精简掉了，现在如果字幕组有配置字幕会用字幕组的格式，一般这些格式没有大问题，我也懒得去研究新版本咋调整字幕了。如果是没有定义格式的字幕，右键工具-设置目录，修改mpv.conf对应项就可以了，备份一下我的字幕设置：</p>
 </li>
 </ul>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs smali"><span class="hljs-comment">########</span><br><span class="hljs-comment"># 字幕 #</span><br><span class="hljs-comment">########</span><br>  <br>sub-auto = fuzzy<br>sub-file-paths = sub;subtitles<br>slang = chs,sc,zh,chi,zho<br>  <br>sub-font = <span class="hljs-string">&quot;Microsoft YaHei&quot;</span><br>sub-font-size = 50<br>sub-color = <span class="hljs-string">&quot;#FFFFFF&quot;</span><br>sub-use-margins = yes<br>sub-border-size = 1.5<br>  <br>sub-ass-force-margins = yes<br></code></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs smali"><span class="hljs-comment">########</span><br><span class="hljs-comment"># 字幕 #</span><br><span class="hljs-comment">########</span><br><br>sub-auto = fuzzy<br>sub-file-paths = sub;subtitles<br>slang = chs,sc,zh,chi,zho<br><br>sub-font = <span class="hljs-string">&quot;Microsoft YaHei&quot;</span><br>sub-font-size = 50<br>sub-color = <span class="hljs-string">&quot;#FFFFFF&quot;</span><br>sub-use-margins = yes<br>sub-border-size = 1.5<br><br>sub-ass-force-margins = yes<br></code></pre></td></tr></table></figure>
 
 <p>另外附上官方的wiki，我也是写这篇博客去看了才知道能临时加载字体，之前就在担心看外挂字幕的看多了会不会导致字体库太庞大：<a target="_blank" rel="noopener" href="https://github.com/hooke007/MPV_lazy/wiki/2_%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%88%E4%BE%BF%E6%90%BA%E5%BC%8F%EF%BC%89">2_设置文件夹（便携式） · hooke007/MPV_lazy Wiki · GitHub</a>（本来是想把这一页全弄过来的，不过想了想，我用mpv也是基于这个项目，要是这个项目没了，那我这个笔记也没啥用了，所以放原地址吧）</p>
 <p>至于高清片源和字幕去哪儿找，反正是我个人笔记，浏览器收藏了就不记了</p>
@@ -255,6 +255,7 @@
 <p><img src="https://cdn.staticaly.com/gh/IzayoiAster/-@master/Other/image.310zl8x3os40.webp" srcset="/img/loading.gif" alt="image"></p>
 <p>顺手再修改一下全屏显示，舒服，这谁能看出来是foobar2000😋</p>
 <p><img src="https://cdn.staticaly.com/gh/IzayoiAster/-@master/Other/image.3bh7wkq955w0.webp" srcset="/img/loading.gif" alt="image"></p>
+<p>另外再补充一个技巧，双击右侧正在播放的歌曲的标题，就可以定位当前歌曲了</p>
 <h3 id="音乐库同步"><a href="#音乐库同步" class="headerlink" title="音乐库同步"></a>音乐库同步</h3><p>要是电脑或者手机每次改完歌或者加了新的歌都要拎出来传到另外的设备上，那肯定不现实，一次两次还好说，多了就嫌麻烦了（不过也不一定，歌曲数量其实已经审美饱和了emm），如果是onedirve之类的同步盘也不靠谱，因为光主歌单就20多个G了实在是太大了，只能是用跨平台局域网差异同步软件才合适。这里我选开源的<strong>syncthing</strong>，具体教程网上肯定就，就不在这儿写了。</p>
 <p>不过要单说一点，syncthing有<strong>版本控制</strong>，记得打开，不然好不容易找的无损资源丢了还是挺难顶的。</p>
 
@@ -283,6 +284,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/03/12/%E5%85%B3%E4%BA%8EAndroidStudio%E8%BF%9E%E4%B8%8D%E4%B8%8A%E6%89%8B%E6%9C%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于AndroidStudio连不上手机</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
