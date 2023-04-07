@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>关于tqdm不能正常显示进度条</title>
+    <link href="/2023/04/07/%E5%85%B3%E4%BA%8Etqdm/"/>
+    <url>/2023/04/07/%E5%85%B3%E4%BA%8Etqdm/</url>
+    
+    <content type="html"><![CDATA[<p>tqdm是个好东西，一般来说把它套在循环体上要迭代的东西上就行了，但是今天做AI作业的时候遇到了：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> batch_idx, (data, target) <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(train_loader):<br></code></pre></td></tr></table></figure><p>我直接凭感觉套在<code>enumerate</code>上，发现根本没有进度条，原来是<code>enumerate</code>不会提供数目，tqdm就抓瞎了</p><p>既然如此我就指定，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">... </span><span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">enumerate</span>(train_loader), total=<span class="hljs-built_in">len</span>(train_loader.dataset))<br></code></pre></td></tr></table></figure><p>结果还是不行，思索一番，这不是普通的循环，这是train方法里有batch_size的循环，我直接套个len显然是too young too simple, sometimes naive</p><hr><p>其实有一个很简单的方法，我没想到tqdm这么厉害：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">... </span><span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(tqdm(train_loader)):<br></code></pre></td></tr></table></figure><p><strong>6</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>杂项</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于AndroidStudio连不上手机</title>
     <link href="/2023/03/12/%E5%85%B3%E4%BA%8EAndroidStudio%E8%BF%9E%E4%B8%8D%E4%B8%8A%E6%89%8B%E6%9C%BA/"/>
     <url>/2023/03/12/%E5%85%B3%E4%BA%8EAndroidStudio%E8%BF%9E%E4%B8%8D%E4%B8%8A%E6%89%8B%E6%9C%BA/</url>

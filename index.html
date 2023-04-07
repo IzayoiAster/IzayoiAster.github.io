@@ -184,6 +184,52 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/04/07/%E5%85%B3%E4%BA%8Etqdm/">关于tqdm不能正常显示进度条</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2023/04/07/%E5%85%B3%E4%BA%8Etqdm/">
+          
+          
+            
+          
+          tqdm是个好东西，一般来说把它套在循环体上要迭代的东西上就行了，但是今天做AI作业的时候遇到了：
+1for batch_idx, (data, target) in enumerate(train_loader):
+
+我直接凭感觉套在enumerate上，发现根本没有进度条，原来是enumerate不会提供数目，tqdm就抓瞎了
+既然如此我就指定，
+1... in tqdm(enumerate(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-07 20:19" pubdate>
+              2023-04-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/03/12/%E5%85%B3%E4%BA%8EAndroidStudio%E8%BF%9E%E4%B8%8D%E4%B8%8A%E6%89%8B%E6%9C%BA/">关于AndroidStudio连不上手机</a>
       </h1>
 
@@ -557,51 +603,6 @@ Java因为原来的jdk还在，就不写咋下载jdk了
             <i class="iconfont icon-date"></i>
             <time datetime="2022-05-10 13:36" pubdate>
               2022-05-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9D%82%E9%A1%B9/">杂项</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/25/%E5%AE%89%E8%A3%85mac%E8%99%9A%E6%8B%9F%E6%9C%BA/">安装mac虚拟机</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/04/25/%E5%AE%89%E8%A3%85mac%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-          
-          
-            
-          
-          https://www.bilibili.com/read/cv9392708
-http://yanggz.caigb.cn/641.html
-https://blog.csdn.net/jiunian_2761/article/details/103950990
-https://blog.csdn.net/asdfghjkl0606/article/details/120791367
-记得查看以
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-25 21:57" pubdate>
-              2022-04-25
             </time>
           </div>
         
