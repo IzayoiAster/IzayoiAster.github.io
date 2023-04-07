@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>PyTorch的process RE</title>
+    <link href="/2023/04/07/PyTorch%E7%9A%84process-RE/"/>
+    <url>/2023/04/07/PyTorch%E7%9A%84process-RE/</url>
+    
+    <content type="html"><![CDATA[<p>有时在炼丹的时候，会出现这样诡异的RE，其中包含这种信息：</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">RuntimeError: <br>        An attempt has been made <span class="hljs-built_in">to</span> <span class="hljs-built_in">start</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">new</span> <span class="hljs-built_in">process</span> <span class="hljs-keyword">before</span> <span class="hljs-keyword">the</span><br>        current <span class="hljs-built_in">process</span> has finished its bootstrapping phase.<br><br>        This probably means that you are <span class="hljs-keyword">not</span> <span class="hljs-keyword">using</span> fork <span class="hljs-built_in">to</span> <span class="hljs-built_in">start</span> your<br>        child processes <span class="hljs-keyword">and</span> you have forgotten <span class="hljs-built_in">to</span> use <span class="hljs-keyword">the</span> proper idiom<br>        <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> main module:<br><br>            <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>                freeze_support()<br>                ...<br><br>        The <span class="hljs-string">&quot;freeze_support()&quot;</span> <span class="hljs-built_in">line</span> can be omitted <span class="hljs-keyword">if</span> <span class="hljs-keyword">the</span> program<br>        is <span class="hljs-keyword">not</span> going <span class="hljs-built_in">to</span> be frozen <span class="hljs-built_in">to</span> produce <span class="hljs-keyword">an</span> executable.<br></code></pre></td></tr></table></figure><p>解决办法也很简单，把train和test的入口调用放到main里面就好了</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>PyTorch</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于tqdm不能正常显示进度条</title>
     <link href="/2023/04/07/%E5%85%B3%E4%BA%8Etqdm/"/>
     <url>/2023/04/07/%E5%85%B3%E4%BA%8Etqdm/</url>
