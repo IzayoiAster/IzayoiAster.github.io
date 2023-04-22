@@ -227,7 +227,6 @@
 <p>chkconfig命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkconfig --add keepalived  <br>chkconfig keepalived on<br></code></pre></td></tr></table></figure>
 
-
 <p>sysv-rc-conf命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get install sysv-rc-conf<br>sysv-rc-conf keepalived on<br></code></pre></td></tr></table></figure>
 
@@ -239,19 +238,11 @@
 <p>换成</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sysv-rc-conf mysql on<br></code></pre></td></tr></table></figure>
 
-
-
-
-
 <p>安装完成初次登录的时候报错了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql: error <span class="hljs-keyword">while</span> loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory<br></code></pre></td></tr></table></figure>
 
 <p>那么就手动安装对应的包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install libncurses5<br></code></pre></td></tr></table></figure>
-
-
-
-
 
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zipxzf/articles/12813868.html">Navicat连接远程（阿里云服务器）mysql数据库 - xufat - 博客园</a></p>
 

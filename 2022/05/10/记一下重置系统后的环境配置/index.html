@@ -281,10 +281,6 @@
 <p>插入：又在另一个电脑上重新激活了一下，提示是这样的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br></code></pre></td></tr></table></figure>
 
-
-
-
-
 <p>这之后再打开终端，还会报好久没见过的经典红字错误<code>因为在此系统上禁止运行脚本报错</code>，那就这样：</p>
 <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">管理员身份运行 <span class="hljs-string">PowerShell</span><br><span class="hljs-string"></span>执行：<span class="hljs-built_in">get-ExecutionPolicy，若显示</span> <span class="hljs-string">Restricted</span> 表示状态是禁止的<br>执行：<span class="hljs-built_in">set-ExecutionPolicy，会提示输入参数</span><br><span class="hljs-built_in">输入</span> <span class="hljs-string">RemoteSigned</span> 会提示进行选择 （我倒是到这一步就结束了）<br>输入：<span class="hljs-string">Y</span>，回车<br></code></pre></td></tr></table></figure>
 
